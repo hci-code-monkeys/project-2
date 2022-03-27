@@ -1,0 +1,358 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+/* stylelint-disable */
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section{display:block}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+/* stylelint-enable */
+
+a {
+  text-decoration: none;
+}
+
+/* House styles below */
+* {
+  box-sizing: border-box;
+}
+html {
+  font-size: 1.125em;/* 18/16 = 1.125em*/
+  line-height: 1.2em;/* 21.6/18 = 1.2em*/
+  overflow-x: hidden;
+  background-color: #E4F5FF;
+}
+
+input[type="checkbox"] {
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 0 0.6em;
+  border: 0;
+  background: inherit;
+  font-size: small;
+  cursor: pointer;
+  background-color: rgb(177 226 255 / 70%);
+  height: 2em;
+}
+
+body {
+  display: grid;
+  line-height: inherit;
+
+}
+
+h4 {
+  font-weight: 550;
+  display: inline;
+  margin-bottom: 1.5em;
+}
+
+p, h4, label, legend, a, input {
+  color: #3E4146;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 5em auto 5em;
+  height: 2.7777778em;/* 50/18 = 2.7777778em*/
+  padding: 0.5em 1em 0 1em;
+}
+
+.hide {
+  display: none;
+}
+header #home-nav {
+  align-self: center;
+}
+header #second-nav ul {
+  display: flex;
+  justify-content: space-around;
+  align-content: space-between;
+  width: inherit;
+  height: 100%;
+  align-items: center;
+}
+
+header button, header nav a {
+  font-size: 0.77778em; /* 14/18 = */
+}
+
+button:hover {
+  background-color: rgb(177 226 255);
+}
+
+nav.hide li a {
+  width: 100%;
+}
+
+header #second-nav a {
+  grid-column: span 3;
+  text-decoration: none;
+}
+
+main {
+  overflow-x: hidden;
+}
+
+form {
+  padding: 0 1em;
+  grid-column-start: 2;
+}
+
+nav li {
+  transition: all 0.2s;
+  border-bottom: 0.09em solid transparent;
+}
+
+form ol {
+  display: grid;
+  grid-template-columns: repeat( 4, 1fr);
+  grid-column-gap: 1em;
+}
+
+form ol .half {
+  grid-column: span 2;
+}
+
+form ol li, fieldset {
+  grid-column: 1/5;
+  display: grid;
+  grid-template-columns: max-content 1fr 1fr 1fr;
+  grid-row-gap: 0.3em;
+  padding: 0.3em 0;
+}
+
+form ol li label, form ol li input {
+  grid-column: 1/5;
+}
+
+form ol li input {
+  font-size: 0.833333em; /* 15/18 = 0.833333em*/
+  border: 0 solid gray;
+  padding: 0 0 0 0.4em; /* 6/15 = 0.4em*/
+  margin: 0;
+  height: 2em;/* 24/18 = 1.6em*/
+  background-color: #CFEDFF;
+}
+
+.notinput button, .notinput input, .notinput label {
+  cursor: pointer;
+}
+
+form ol .flex input, form ol .flex label {
+  cursor: pointer;
+}
+
+form ol li input:hover, form ol li input:focus-within, form ol li input:focus {
+  background-color: #B1E2FF;
+}
+
+form ol li input:focus-visible {
+  outline: 0;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+.flex {
+  display: flex;
+}
+
+.overflow {
+  overflow: hidden;
+}
+
+li.hideinp {
+  display: none;
+}
+
+#billshipcheck, .notinput #bill {
+  grid-column: 1;
+  align-self: baseline;
+  height: auto;
+}
+
+#billing .notinput label[for="billshipcheck"], .notinput label[for="bill"] {
+  grid-column-start: 2;
+  align-self: baseline;
+  padding-left: 0.2em;
+}
+
+form ol .flex {
+  align-items: baseline;
+}
+
+nav li:hover {
+  border-color: #35B4FF;
+}
+
+nav.hide {
+  background-color: #E4F5FF;
+}
+
+nav.hide li:not(:first-child) {
+  display: flex;
+  margin: 0 0 0 0.6em;
+  padding: 0;
+}
+
+li.location {
+  border-bottom: 0.09em solid #35B4FF;
+  padding: 0 0.3em;
+  margin: 0 0.3em;
+}
+
+li.location:hover {
+  padding: 0 0.6em;
+  margin: 0;
+}
+
+/* Review Design */
+body main#cart {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 1em;
+}
+
+body main#cart section {
+  grid-column: span 12;
+  background-color: #B1E2FF;
+  margin: 0 1em;
+  border-radius: 0.1em;
+  padding: 1em;
+}
+
+body main#cart #shopping-cart {
+  margin-top: 1em;
+}
+
+body main#cart #billing-address {
+  margin-bottom: 1em;
+}
+
+a.edit {
+  float: right;
+  color: #FF2929;
+  text-decoration: underline;
+}
+
+a.edit + p {
+  padding-top: 0.5em;
+}
+
+#shipping-address p:nth-last-child(1),
+#shipping-address p:nth-last-child(2),
+#shipping-address p:nth-last-child(3),
+#billing-address p:nth-last-child(1),
+#billing-address p:nth-last-child(2),
+#billing-address p:nth-last-child(3) {
+  display: inline;
+}
+
+#shipping-address p:nth-last-child(2):after,
+#shipping-address p:nth-last-child(3):after,
+#billing-address p:nth-last-child(2):after,
+#billing-address p:nth-last-child(3):after {
+  content: ",";
+  padding-right: 0.2em;
+}
+
+#product-list li {
+  display: flex;
+  flex-direction: row;
+}
+
+#payment-info p:nth-of-type(1):before {
+  content: "Card Name: ";
+}
+
+#payment-info p:nth-of-type(2):before {
+  content: "Card Number: ";
+}
+
+#payment-info p:nth-of-type(3):before {
+  content: "Expiry Date: ";
+}
+
+#payment-info p:nth-of-type(4):before {
+  content: "CVV: ";
+}
+
+@media (max-width: 31.25em) { /* 500px/16em */
+  main > nav {
+    flex-direction: column;
+    height: max-content;
+    width: 100vw;
+    background: #fff;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    right: -100vw;
+    transition: 0.4s;
+
+  }
+  .translate {
+    right: 0;
+  }
+  .nothide {
+    position: absolute;
+    visibility: hidden;
+    display: none;
+  }
+  .hide button {
+    width: 100%;
+    font-size: 1em;
+  }
+  .hide {
+    display: flex;
+    align-self: center;
+    justify-content: space-evenly;
+  }
+  .hide ul {
+    display: flex;
+    flex-direction: column;
+    min-height: 50vh;
+    margin-bottom: 50vh;
+    justify-content: space-between;
+  }
+  header button.hide {
+    grid-column-start: 3;
+    height: 100%;
+    padding: 1em;
+  }
+}
+
+form li .error{
+  grid-column-start: 1;
+  grid-column-end: -1;
+  color: #FF2929;
+  font-size: 0.75em;
+}
+
+@media (min-width: 56.25em) { /* 900px/16 = 56.25em*/
+  main {
+    display: grid;
+    grid-template-columns: 1fr 50em 1fr; /* 900px/16 = 56.25em */
+  }
+  #home {
+    display: block;
+  }
+  #cart #shopping-cart, #cart #order-summary {
+    grid-column: span 8;
+  }
+
+  #cart #shipping-address, #cart #payment-info, #cart #billing-address {
+    grid-column: span 4;
+    grid-column-start: 9;
+    grid-column-end: 13;
+    margin-left: 0;
+  }
+
+  #cart #shipping-address {
+    grid-row-start: 1;
+    margin-top: 1em;
+  }
+
+}
