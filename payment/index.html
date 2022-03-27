@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Payment Page</title>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+  content="width=device-width,initial-scale=1.0,shrink-to-fit=no,maximum-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/screen.css" />
+  </head>
+  <body>
+    <header aria-label="Navigation">
+      <nav id="home-nav" aria-label="Home Page">
+        <a href="../">Home</a>
+      </nav>
+      <nav class="nothide" id="second-nav" aria-label="Data Pages">
+        <ul>
+          <li>
+            <a href="../shipping">Shipping</a>
+          </li>
+          <li>
+            <a href="../billing">Billing</a>
+          </li>
+          <li class="location">
+            <a href="#">Payment</a>
+          </li>
+          <li>
+            <a href="../cart">Review</a>
+          </li>
+        </ul>
+      </nav>
+      <button type="button" class="nothide">Cart</button>
+      <button aria-hidden="true" type="button" class="hide">Cart</button>
+    </header>
+    <main id="payment">
+      <nav class="hide" aria-hidden="true">
+        <ul>
+          <li>
+            <button class="hide" type="button">Cart</button>
+          </li>
+          <li>
+            <a href="../">Home</a>
+          </li>
+          <li>
+            <a href="../shipping">Shipping</a>
+          </li>
+          <li>
+            <a href="../billing">Billing</a>
+          </li>
+          <li class="location">
+            <a href="#">Payment</a>
+          </li>
+          <li>
+            <a href="../cart">Review</a>
+          </li>
+        </ul>
+      </nav>
+      <form action="../cart" aria-label="Please Enter Your Payment Information">
+        <ol>
+          <li>
+            <label for="name">Name on Card</label>
+            <input type="text" id="name" name="cardname" placeholder="Tomawa Ayorinde" required="required" autocomplete="cc-name"/>
+            <p class="error"> attr(data-before) </p>
+          </li>
+          <li>
+            <label for="number">Card Number</label>
+            <input type="number" id="number" name="cardnumber" placeholder="############" required="required" autocomplete="cc-number"/>
+            <p class="error"> </p>
+          </li>
+          <li class="half">
+            <label for="expiry">Expiration Date</label>
+            <input type="month" id="expiry" name="expirationdate" pattern="[0-9]{4}-[0-9]{2}"
+            placeholder="yyyy-mm" required="required" autocomplete="cc-exp"/>
+            <p class="error"> </p>
+          </li>
+          <li class="half">
+            <label for="cvv">CVV</label>
+            <input type="number" id="cvv" name="cvv" placeholder="123" required="required" autocomplete="cc-csc" minlength="3" maxlength="4"/>
+            <p class="error"> </p>
+          </li>
+          <li class="notinput">
+            <button type="submit"/>Use this card</button>
+          </li>
+        </ol>
+      </form>
+    </main>
+    <footer>
+
+    </footer>
+    <script src="../assets/js/sandbox.js"></script>
+  </body>
+</html>
