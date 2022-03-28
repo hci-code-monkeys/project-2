@@ -105,8 +105,7 @@
       "label": "Cart Page",
       "url": "http://localhost:3000/cart",
       "misMatchThreshold" : 0.1
-    },
-
+    }
   ],
   "paths": {
     "bitmaps_reference": "backstop_data/bitmaps_reference",
