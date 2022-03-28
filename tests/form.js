@@ -6,13 +6,13 @@ describe('Form behaviour test', function() {
     browser
       .url('http://localhost:3000/shipping')
       .click('li.notinput button[type="submit"]')
-      .assert.textContains('li:nth-of-type(1) p.error', 'Please fill out this field with characters.')
-      .assert.textContains('li:nth-of-type(2) p.error', 'Please fill out this field with characters.')
-      .assert.textContains('li:nth-of-type(3) p.error', 'Please fill out this field with numbers.')
-      .assert.textContains('li:nth-of-type(4) p.error', 'Please fill out this field with characters.')
-      .assert.textContains('li:nth-of-type(5) p.error', 'Please fill out this field with characters.')
-      .assert.textContains('li:nth-of-type(6) p.error', 'Please fill out this field with characters.')
-      .assert.textContains('li:nth-of-type(7) p.error', 'Please fill out this field with numbers.');
+      .assert.textContains('li input#country ~ p.error', 'Please fill out this field with characters.')
+      .assert.textContains('li input#fullname ~  p.error', 'Please fill out this field with characters.')
+      .assert.textContains('li input#phonenumber ~  p.error', 'Please fill out this field with numbers.')
+      .assert.textContains('li input#address1 ~  p.error', 'Please fill out this field with characters.')
+      .assert.textContains('li input#state ~  p.error', 'Please fill out this field with characters.')
+      .assert.textContains('li input#city ~  p.error', 'Please fill out this field with characters.')
+      .assert.textContains('li input#zip ~  p.error', 'Please fill out this field with numbers.');
   });
 
   it('Shipping special error logs', function(browser){
@@ -37,13 +37,13 @@ describe('Form behaviour test', function() {
     browser
       .url('http://localhost:3000/billing')
       .click('li.notinput button[type="submit"]')
-      .assert.textContains('li:nth-of-type(2) p.error', 'Please fill out this field with characters.')
-      .assert.textContains('li:nth-of-type(3) p.error', 'Please fill out this field with characters.')
-      .assert.textContains('li:nth-of-type(4) p.error', 'Please fill out this field with numbers.')
-      .assert.textContains('li:nth-of-type(5) p.error', 'Please fill out this field with characters.')
-      .assert.textContains('li:nth-of-type(6) p.error', 'Please fill out this field with characters.')
-      .assert.textContains('li:nth-of-type(7) p.error', 'Please fill out this field with characters.')
-      .assert.textContains('li:nth-of-type(8) p.error', 'Please fill out this field with numbers.');
+      .assert.textContains('li input#country ~ p.error', 'Please fill out this field with characters.')
+      .assert.textContains('li input#fullname ~  p.error', 'Please fill out this field with characters.')
+      .assert.textContains('li input#phonenumber ~  p.error', 'Please fill out this field with numbers.')
+      .assert.textContains('li input#address1 ~  p.error', 'Please fill out this field with characters.')
+      .assert.textContains('li input#state ~  p.error', 'Please fill out this field with characters.')
+      .assert.textContains('li input#city ~  p.error', 'Please fill out this field with characters.')
+      .assert.textContains('li input#zip ~  p.error', 'Please fill out this field with numbers.');
   });
 
   it('Billing special error logs', function(browser){
@@ -68,10 +68,10 @@ describe('Form behaviour test', function() {
     browser
       .url('http://localhost:3000/payment')
       .click('li.notinput button[type="submit"]')
-      .assert.textContains('li:nth-of-type(1) p.error', 'Please fill out this field with characters.')
-      .assert.textContains('li:nth-of-type(2) p.error', 'Please fill out this field with numbers.')
-      .assert.textContains('li:nth-of-type(3) p.error', 'Please fill out this field with date format.')
-      .assert.textContains('li:nth-of-type(4) p.error', 'Please fill out this field with numbers.');
+      .assert.textContains('li input#name ~ p.error', 'Please fill out this field with characters.')
+      .assert.textContains('li input#number ~ p.error', 'Please fill out this field with numbers.')
+      .assert.textContains('li input#expiry ~ p.error', 'Please fill out this field with date format.')
+      .assert.textContains('li input#cvv ~ p.error', 'Please fill out this field with numbers.');
   });
 
   it('Payment special error logs', function(browser){
