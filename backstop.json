@@ -16,28 +16,101 @@
   "onReadyScript": "puppet/onReady.js",
   "scenarios": [
     {
-      "label": "BackstopJS Homepage",
+      "label": "Homepage",
       "url": "http://localhost:3000/",
       "misMatchThreshold" : 0.1
     },
     {
-      "label": "BackstopJS Billing Page",
+      "label": "Shipping Page",
+      "url": "http://localhost:3000/shipping",
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Shipping Page, No Input",
+      "url": "http://localhost:3000/shipping",
+      "clickSelector": "li.notinput button[type='submit']",
+      "delay": 1000,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Shipping Page, Wrong Input",
+      "url": "http://localhost:3000/shipping",
+      "keyPressSelectors": [
+        {
+          "selector": "#fullname",
+          "keyPress": "Tomiwa"
+        },
+        {
+          "selector": "#address1",
+          "keyPress": "Kacek"
+        }
+      ],
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Billing Page",
       "url": "http://localhost:3000/billing",
       "misMatchThreshold" : 0.1
     },
     {
-      "label": "BackstopJS Cart Page",
-      "url": "http://localhost:3000/cart",
+      "label": "Billing Page, No Input",
+      "url": "http://localhost:3000/billing",
+      "clickSelector": "li.notinput button[type='submit']",
+      "delay": 1000,
       "misMatchThreshold" : 0.1
     },
     {
-      "label": "BackstopJS Payment Page",
+      "label": "Billing Page, Wrong Input",
+      "url": "http://localhost:3000/billing",
+      "keyPressSelectors": [
+        {
+          "selector": "#fullname",
+          "keyPress": "Tomiwa"
+        },
+        {
+          "selector": "#address1",
+          "keyPress": "Kacek"
+        }
+      ],
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Billing Page, Shipping Check",
+      "url": "http://localhost:3000/billing",
+      "clickSelector": "li.notinput input[type='checkbox']",
+      "delay": 100,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Payment Page",
       "url": "http://localhost:3000/payment",
       "misMatchThreshold" : 0.1
     },
     {
-      "label": "BackstopJS Shipping Page",
-      "url": "http://localhost:3000/shipping",
+      "label": "Payment Page, No Input",
+      "url": "http://localhost:3000/payment",
+      "clickSelector": "li.notinput button[type='submit']",
+      "delay": 1000,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Payment Page, Wrong Input",
+      "url": "http://localhost:3000/payment",
+      "keyPressSelectors": [
+        {
+          "selector": "#name",
+          "keyPress": "Tomiwa"
+        },
+        {
+          "selector": "#cvv",
+          "keyPress": "12"
+        }
+      ],
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Cart Page",
+      "url": "http://localhost:3000/cart",
       "misMatchThreshold" : 0.1
     }
   ],
