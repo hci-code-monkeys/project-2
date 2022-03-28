@@ -28,7 +28,7 @@
     {
       "label": "Shipping Page, No Input",
       "url": "http://localhost:3000/shipping",
-      "clickSelector": "li.notinput button",
+      "clickSelector": "li.notinput button[type='submit']",
       "delay": 1500,
       "misMatchThreshold" : 0.1
     },
@@ -55,7 +55,7 @@
     {
       "label": "Billing Page, No Input",
       "url": "http://localhost:3000/billing",
-      "clickSelector": "li.notinput button",
+      "clickSelector": "li.notinput button[type='submit']",
       "delay": 1500,
       "misMatchThreshold" : 0.1
     },
@@ -82,7 +82,7 @@
     {
       "label": "Payment Page, No Input",
       "url": "http://localhost:3000/payment",
-      "clickSelector": "li.notinput button",
+      "clickSelector": "li.notinput button[type='submit']",
       "delay": 1500,
       "misMatchThreshold" : 0.1
     },
