@@ -53,8 +53,25 @@
       "misMatchThreshold" : 0.1
     },
     {
-      "label": "Cart Page",
-      "url": "http://localhost:3000/cart",
+      "label": "Billing Page, No Input",
+      "url": "http://localhost:3000/billing",
+      "clickSelector": "li.notinput button",
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Billing Page, Wrong Input",
+      "url": "http://localhost:3000/billing",
+      "keyPressSelectors": [
+        {
+          "selector": "#fullname",
+          "keyPress": "Tomiwa"
+        },
+        {
+          "selector": "#address1",
+          "keyPress": "Kacek"
+        }
+      ],
       "misMatchThreshold" : 0.1
     },
     {
