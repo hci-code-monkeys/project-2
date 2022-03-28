@@ -16,27 +16,27 @@
   "onReadyScript": "puppet/onReady.js",
   "scenarios": [
     {
-      "label": "BackstopJS Homepage",
+      "label": "Homepage",
       "url": "http://localhost:3000/",
       "misMatchThreshold" : 0.1
     },
     {
-      "label": "BackstopJS Billing Page",
+      "label": "Billing Page",
       "url": "http://localhost:3000/billing",
       "misMatchThreshold" : 0.1
     },
     {
-      "label": "BackstopJS Cart Page",
+      "label": "Cart Page",
       "url": "http://localhost:3000/cart",
       "misMatchThreshold" : 0.1
     },
     {
-      "label": "BackstopJS Payment Page",
+      "label": "Payment Page",
       "url": "http://localhost:3000/payment",
       "misMatchThreshold" : 0.1
     },
     {
-      "label": "BackstopJS Shipping Page",
+      "label": "Shipping Page",
       "url": "http://localhost:3000/shipping",
       "misMatchThreshold" : 0.1
     }
