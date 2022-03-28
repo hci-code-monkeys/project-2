@@ -21,6 +21,33 @@
       "misMatchThreshold" : 0.1
     },
     {
+      "label": "Shipping Page",
+      "url": "http://localhost:3000/shipping",
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Shipping Page, No Input",
+      "url": "http://localhost:3000/shipping",
+      "clickSelector": "li.notinput button",
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Shipping Page, Wrong Input",
+      "url": "http://localhost:3000/shipping",
+      "keyPressSelectors": [
+        {
+          "selector": "#fullname",
+          "keyPress": "Tomiwa"
+        },
+        {
+          "selector": "#address1",
+          "keyPress": "Kacek"
+        }
+      ],
+      "misMatchThreshold" : 0.1
+    },
+    {
       "label": "Billing Page",
       "url": "http://localhost:3000/billing",
       "misMatchThreshold" : 0.1
@@ -33,11 +60,6 @@
     {
       "label": "Payment Page",
       "url": "http://localhost:3000/payment",
-      "misMatchThreshold" : 0.1
-    },
-    {
-      "label": "Shipping Page",
-      "url": "http://localhost:3000/shipping",
       "misMatchThreshold" : 0.1
     }
   ],
