@@ -78,7 +78,35 @@
       "label": "Payment Page",
       "url": "http://localhost:3000/payment",
       "misMatchThreshold" : 0.1
-    }
+    },
+    {
+      "label": "Payment Page, No Input",
+      "url": "http://localhost:3000/payment",
+      "clickSelector": "li.notinput button",
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Payment Page, Wrong Input",
+      "url": "http://localhost:3000/payment",
+      "keyPressSelectors": [
+        {
+          "selector": "#name",
+          "keyPress": "Tomiwa"
+        },
+        {
+          "selector": "#cvv",
+          "keyPress": "12"
+        }
+      ],
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Cart Page",
+      "url": "http://localhost:3000/cart",
+      "misMatchThreshold" : 0.1
+    },
+
   ],
   "paths": {
     "bitmaps_reference": "backstop_data/bitmaps_reference",
