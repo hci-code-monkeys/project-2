@@ -40,11 +40,11 @@ var default_selector = [1, 2, 3, 4, 5, 6, 7, 8];
 var main = document.querySelector("main");
 var counte, formDataReset, formDataBill, billCount;
 
-if( sessionStorage.getItem("formData") === null){
+if(!sessionStorage.getItem("formData")){
   sessionStorage.setItem("billingShippingCheck", "false");
 }
 
-if( sessionStorage.getItem("formData") === null){
+if(!sessionStorage.getItem("formData")){
   sessionStorage.setItem("formData",
     JSON.stringify(
       {
@@ -414,7 +414,7 @@ document.querySelectorAll("button.hide")[1].addEventListener("click", function()
 
 populate();
 transform();
-if(sessionStorage.getItem("cart_selector") === null){
+if(!sessionStorage.getItem("cart_selector")){
   sessionStorage.setItem("cart_selector", []);
 }
 
@@ -423,7 +423,7 @@ if(sessionStorage.getItem("cart_selector") === null){
 // Sections
 
 // Home
-if(document.querySelector("main#home") !== null) {
+if(document.querySelector("main#home")) {
   makeOL(products, 'product-list', default_selector);
   main.addEventListener('click', function(event) {
     for (counte = 0; counte < document.querySelector("ol").childElementCount; counte++) {
@@ -435,7 +435,7 @@ if(document.querySelector("main#home") !== null) {
 }
 
 // Shipping
-if(document.querySelector("main#shipping") !== null) {
+if(document.querySelector("main#shipping")) {
   try{
     main.addEventListener('change', function(event){
       changeEventFunction(event);
@@ -455,7 +455,7 @@ if(document.querySelector("main#shipping") !== null) {
 }
 
 // Billing
-if(document.querySelector("main#billing") !== null) {
+if(document.querySelector("main#billing")) {
   if(sessionStorage.getItem("billingShippingCheck") === "true"){
     document.querySelector("#billshipcheck").checked = true;
     for ( billCount = 0; billCount < document.querySelectorAll("form ol li:not(.notinput)").length; billCount++) {
@@ -487,7 +487,7 @@ if(document.querySelector("main#billing") !== null) {
 }
 
 // Payment
-if(document.querySelector("main#payment") !== null) {
+if(document.querySelector("main#payment")) {
   main.addEventListener('click', function(event) {
     if (event.target === document.querySelector("#payment form button")) {
       doForm(2);
@@ -506,7 +506,7 @@ if(document.querySelector("main#payment") !== null) {
 }
 
 // Cart
-if(document.querySelector("main#cart") !== null) {
+if(document.querySelector("main#cart")) {
   formDataReset = JSON.parse(sessionStorage.getItem("formData"));
   if(formDataReset.formSubmission.shipping.country !== ""){
     formDataReset.formInput.shipping = formDataReset.formSubmission.shipping;
