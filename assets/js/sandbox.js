@@ -458,6 +458,10 @@ if(document.querySelector("main#shipping") !== null) {
     });
   }
 
+  main.addEventListener('input', function(event){
+    removeError(event);
+  });
+
   main.addEventListener('click', function(event) {
     if (event.target === document.querySelector("#shipping form button")) {
       doForm(0);
@@ -496,6 +500,10 @@ if(document.querySelector("main#billing") !== null) {
       shippingCheck(event);
     });
   }
+
+  main.addEventListener('input', function(event){
+    removeError(event);
+  });
 }
 
 // Payment
@@ -515,6 +523,9 @@ if(document.querySelector("main#payment") !== null) {
       changeEventFunction(event);
     });
   }
+  main.addEventListener('input', function(event){
+    removeError(event);
+  });
 }
 
 // Cart
