@@ -231,11 +231,11 @@ function doForm() {
     errorcheck = inputValidator(errorlog[b]);
     if (errorcheck){
       listNode[i].innerText = errorlog[b].validationMessage;
-      event.target.setAttribute("role", "alert");
+      event.target.parentNode.setAttribute("role", "alert");
       validateStatus = false;
     } else {
       listNode[i].innerText = "";
-      event.target.removeAttribute("role");
+      event.target.parentNode.removeAttribute("role");
     }
     if(listNode[i].parentNode.tagName === "FIELDSET"){ // skip address2
       b++;
@@ -359,7 +359,7 @@ function changeEventFunction(event) {
     errorcheck = inputValidator(event.target);
     if(errorcheck) {
       event.target.parentNode.getElementsByClassName("error")[0].innerText = event.target.validationMessage;
-      event.target.setAttribute("role", "alert");
+      event.target.parentNode.setAttribute("role", "alert");
     } else {
       event.target.parentNode.getElementsByClassName("error")[0].innerText = "";
       event.target.parentNode.removeAttribute("role", "alert");
