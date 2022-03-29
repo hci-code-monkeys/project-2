@@ -231,11 +231,11 @@ function doForm() {
     errorcheck = inputValidator(errorlog[b]);
     if (errorcheck){
       listNode[i].innerText = errorlog[b].validationMessage;
-      event.target.parentNode.setAttribute("role", "alert");
+      event.target.setAttribute("role", "alert");
       validateStatus = false;
     } else {
       listNode[i].innerText = "";
-      event.target.parentNode.removeAttribute("role");
+      event.target.removeAttribute("role");
     }
     if(listNode[i].parentNode.tagName === "FIELDSET"){ // skip address2
       b++;
@@ -359,22 +359,10 @@ function changeEventFunction(event) {
     errorcheck = inputValidator(event.target);
     if(errorcheck) {
       event.target.parentNode.getElementsByClassName("error")[0].innerText = event.target.validationMessage;
-      event.target.parentNode.setAttribute("role", "alert");
+      event.target.setAttribute("role", "alert");
     } else {
       event.target.parentNode.getElementsByClassName("error")[0].innerText = "";
-      event.target.parentNode.removeAttribute("role", "alert");
-    }
-  }
-}
-
-function removeError(event) { // Remove the error if user input is valid
-  var errorcheck;
-  storeUserInput(event.target, document.querySelector("main").id);
-  if(!("notinput" in event.target.parentNode.classList) && event.target.type !== "checkbox"){
-    errorcheck = inputValidator(event.target);
-    if(!errorcheck) {
-      event.target.parentNode.getElementsByClassName("error")[0].innerText = "";
-      event.target.parentNode.setAttribute("role", "alert");
+      event.target.removeAttribute("role", "alert");
     }
   }
 }
@@ -458,10 +446,6 @@ if(document.querySelector("main#shipping")) {
     });
   }
 
-  main.addEventListener('input', function(event){
-    removeError(event);
-  });
-
   main.addEventListener('click', function(event) {
     if (event.target === document.querySelector("#shipping form button")) {
       doForm(0);
@@ -500,10 +484,6 @@ if(document.querySelector("main#billing")) {
       shippingCheck(event);
     });
   }
-
-  main.addEventListener('input', function(event){
-    removeError(event);
-  });
 }
 
 // Payment
@@ -523,9 +503,6 @@ if(document.querySelector("main#payment")) {
       changeEventFunction(event);
     });
   }
-  main.addEventListener('input', function(event){
-    removeError(event);
-  });
 }
 
 // Cart
