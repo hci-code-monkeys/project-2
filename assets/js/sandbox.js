@@ -362,7 +362,19 @@ function changeEventFunction(event) {
       event.target.setAttribute("role", "alert");
     } else {
       event.target.parentNode.getElementsByClassName("error")[0].innerText = "";
-      event.target.removeAttribute("role", "alert");
+      event.target.parentNode.removeAttribute("role", "alert");
+    }
+  }
+}
+
+function removeError(event) { // Remove the error if user input is valid
+  var errorcheck;
+  storeUserInput(event.target, document.querySelector("main").id);
+  if(!("notinput" in event.target.parentNode.classList) && event.target.type !== "checkbox"){
+    errorcheck = inputValidator(event.target);
+    if(!errorcheck) {
+      event.target.parentNode.getElementsByClassName("error")[0].innerText = "";
+      event.target.parentNode.setAttribute("role", "alert");
     }
   }
 }
