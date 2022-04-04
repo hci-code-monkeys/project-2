@@ -38,28 +38,28 @@ var products = [
 // Default selector in the event every object in array is needed e.g home page
 var default_selector = [1, 2, 3, 4, 5, 6, 7, 8];
 var main = document.querySelector("main");
-var counte, formDataReset, formDataBill, billCount;
+var counte, formDataReset, formDataBill, billCount, stor;
 
 // Test to see if local storage is available, if not use session storage
 function localStorageTest(){
   var test = 'test';
   try {
-      localStorage.setItem(test, test);
-      localStorage.removeItem(test);
-      return true;
+    localStorage.setItem(test, test);
+    localStorage.removeItem(test);
+    return true;
   } catch(e) {
-      return false;
+    return false;
   }
 }
 
 if(localStorageTest() === true){
-  var stor = localStorage;
+  stor = localStorage;
   console.log("We are using localStorage");
 }else{
-  var stor = sessionStorage;
+  stor = sessionStorage;
   console.log("We are using sessionStorage");
 }
-console.log(stor)
+console.log(stor);
 if(!stor.getItem("formData")){
   stor.setItem("billingShippingCheck", "false");
 }
