@@ -14,7 +14,7 @@
   - Holding ourselves responsible for meeting on time in case we decide to have a Discord call or a google meet
 - Angelo will be in charge of writing JavaScript to ensure the site remains functional and interactive
 - Tomiwa will be in charge of CSS design problems and HTML structures
-- Priyank will design the UI/UX for this project using figma. He will also help with HTML and CSS.
+- Priyank Mithapara will design the UI/UX for this project using figma. He will also help with HTML and CSS.
 - Alexei will be helping design the UI/UX portion of the projuect using figma. He will also be aiding with HTML and CSS.
 - *Add roles after introducing and discussing on discord*
 
