@@ -38,14 +38,34 @@ var products = [
 // Default selector in the event every object in array is needed e.g home page
 var default_selector = [1, 2, 3, 4, 5, 6, 7, 8];
 var main = document.querySelector("main");
-var counte, formDataReset, formDataBill, billCount;
+var counte, formDataReset, formDataBill, billCount, stor;
 
-if( sessionStorage.getItem("formData") === null){
-  sessionStorage.setItem("billingShippingCheck", "false");
+// Test to see if local storage is available, if not use session storage
+function localStorageTest(){
+  var test = 'test';
+  try {
+    localStorage.setItem(test, test);
+    localStorage.removeItem(test);
+    return true;
+  } catch(e) {
+    return false;
+  }
 }
 
-if( sessionStorage.getItem("formData") === null){
-  sessionStorage.setItem("formData",
+if(localStorageTest() === true){
+  stor = localStorage;
+  console.log("We are using localStorage");
+}else{
+  stor = sessionStorage;
+  console.log("We are using sessionStorage");
+}
+console.log(stor);
+if(!stor.getItem("formData")){
+  stor.setItem("billingShippingCheck", "false");
+}
+
+if(!stor.getItem("formData")){
+  stor.setItem("formData",
     JSON.stringify(
       {
         formSubmission : {
@@ -181,16 +201,16 @@ function makeOL(object, id, selected){
 
 function cartFunction(item) {
   var cart_selc;
-  if (!sessionStorage.getItem("cart_selector").includes(item)){
-    cart_selc = sessionStorage.getItem("cart_selector").split(",");
+  if (!stor.getItem("cart_selector").includes(item)){
+    cart_selc = stor.getItem("cart_selector").split(",");
     cart_selc.push(item);
-    sessionStorage.setItem("cart_selector", cart_selc);
+    stor.setItem("cart_selector", cart_selc);
   }
 }
 
 function makeP(id, dataId){
   var i, paragraphItems;
-  var formData = JSON.parse(sessionStorage.getItem("formData"));
+  var formData = JSON.parse(stor.getItem("formData"));
 
   // Add appropriate number of list
   for ( i = 0; i < Object.keys(formData.formSubmission[dataId]).length; i++) {
@@ -207,7 +227,7 @@ function makeP(id, dataId){
 function inputValidator(input) {
   var a;
   var errorcheck = false;
-  var formData = JSON.parse(sessionStorage.getItem("formData"));
+  var formData = JSON.parse(stor.getItem("formData"));
   for( a = Object.keys(formData.errorInstruction[input.id]).length - 1; a >= 0; a--){
     if(!RegExp(formData.errorInstruction[input.id][a][0]).test(input.value)){
       input.setCustomValidity(formData.errorInstruction[input.id][a][1]);
@@ -223,7 +243,7 @@ function doForm() {
   var errorlog;
   var listNode;
   var i, b, errorcheck, validateStatus = true;
-  formData = JSON.parse(sessionStorage.getItem("formData"));
+  formData = JSON.parse(stor.getItem("formData"));
   errorlog = document.querySelectorAll("form li:not(.notinput) input");
   listNode = document.querySelectorAll("form li:not(.notinput) p.error");
   b = 0;
@@ -231,11 +251,11 @@ function doForm() {
     errorcheck = inputValidator(errorlog[b]);
     if (errorcheck){
       listNode[i].innerText = errorlog[b].validationMessage;
-      event.target.setAttribute("role", "alert");
+      event.target.parentNode.setAttribute("role", "alert");
       validateStatus = false;
     } else {
       listNode[i].innerText = "";
-      event.target.removeAttribute("role");
+      event.target.parentNode.removeAttribute("role");
     }
     if(listNode[i].parentNode.tagName === "FIELDSET"){ // skip address2
       b++;
@@ -296,7 +316,7 @@ function doForm() {
       formData.formInput.payment = formData.formSubmission.payment;
       location.assign("../cart");
     }
-    sessionStorage.setItem("formData", JSON.stringify(formData));
+    stor.setItem("formData", JSON.stringify(formData));
   }
 }
 
@@ -305,13 +325,13 @@ function storeUserInput(element, id) {
   if (element.tagName !== "INPUT") {
     return;
   }
-  formData = JSON.parse(sessionStorage.getItem("formData"));
+  formData = JSON.parse(stor.getItem("formData"));
   formData.formInput[id][element.id] = element.value;
-  sessionStorage.setItem("formData", JSON.stringify(formData));
+  stor.setItem("formData", JSON.stringify(formData));
 }
 
 function populate(){
-  var formData = JSON.parse(sessionStorage.getItem("formData"));
+  var formData = JSON.parse(stor.getItem("formData"));
   var mainId = document.querySelector("main").id;
   if(mainId === "shipping") {
     document.forms[0].country.value = formData.formInput[mainId].country;
@@ -359,16 +379,28 @@ function changeEventFunction(event) {
     errorcheck = inputValidator(event.target);
     if(errorcheck) {
       event.target.parentNode.getElementsByClassName("error")[0].innerText = event.target.validationMessage;
-      event.target.setAttribute("role", "alert");
+      event.target.parentNode.setAttribute("role", "alert");
     } else {
       event.target.parentNode.getElementsByClassName("error")[0].innerText = "";
-      event.target.removeAttribute("role", "alert");
+      event.target.parentNode.removeAttribute("role", "alert");
+    }
+  }
+}
+
+function removeError(event) { // Remove the error if user input is valid
+  var errorcheck;
+  storeUserInput(event.target, document.querySelector("main").id);
+  if(!("notinput" in event.target.parentNode.classList) && event.target.type !== "checkbox"){
+    errorcheck = inputValidator(event.target);
+    if(!errorcheck) {
+      event.target.parentNode.getElementsByClassName("error")[0].innerText = "";
+      event.target.parentNode.setAttribute("role", "alert");
     }
   }
 }
 
 function shippingCheck(event) {
-  formDataBill = JSON.parse(sessionStorage.getItem("formData"));
+  formDataBill = JSON.parse(stor.getItem("formData"));
   if(event.target.id === "billshipcheck"){
     if(event.target.checked && JSON.stringify(formDataBill.formSubmission.shipping) !== JSON.stringify(formDataBill.formSubmission.billing)){
       document.forms[0].country.value = formDataBill.formSubmission.shipping.country;
@@ -379,7 +411,7 @@ function shippingCheck(event) {
       document.forms[0].city.value = formDataBill.formSubmission.shipping.city;
       document.forms[0].state.value = formDataBill.formSubmission.shipping.state;
       document.forms[0].zip.value = formDataBill.formSubmission.shipping.zip;
-      sessionStorage.setItem("billingShippingCheck", "true");
+      stor.setItem("billingShippingCheck", "true");
       doForm(1);
     } else if(event.target.checked){
       for ( billCount = 0; billCount < document.querySelectorAll("form ol li:not(.notinput)").length; billCount++) {
@@ -394,13 +426,13 @@ function shippingCheck(event) {
       document.forms[0].state.value = formDataBill.formSubmission.shipping.state;
       document.forms[0].zip.value = formDataBill.formSubmission.shipping.zip;
       formDataBill.formInput.billing = formDataBill.formSubmission.shipping;
-      sessionStorage.setItem("formData", JSON.stringify(formDataBill));
-      sessionStorage.setItem("billingShippingCheck", "true");
+      stor.setItem("formData", JSON.stringify(formDataBill));
+      stor.setItem("billingShippingCheck", "true");
     } else{
       for ( billCount = 0; billCount < document.querySelectorAll("form ol li:not(.notinput)").length; billCount++) {
         document.querySelectorAll("form ol li:not(.notinput)")[billCount].classList.toggle("hideinp");
       }
-      sessionStorage.setItem("billingShippingCheck", "false");
+      stor.setItem("billingShippingCheck", "false");
     }
   }
 }
@@ -414,8 +446,8 @@ document.querySelectorAll("button.hide")[1].addEventListener("click", function()
 
 populate();
 transform();
-if(sessionStorage.getItem("cart_selector") === null){
-  sessionStorage.setItem("cart_selector", []);
+if(!stor.getItem("cart_selector")){
+  stor.setItem("cart_selector", []);
 }
 
 // I have been losing track of my javascript functions. I will slowly reorder the already made functions
@@ -423,7 +455,7 @@ if(sessionStorage.getItem("cart_selector") === null){
 // Sections
 
 // Home
-if(document.querySelector("main#home") !== null) {
+if(document.querySelector("main#home")) {
   makeOL(products, 'product-list', default_selector);
   main.addEventListener('click', function(event) {
     for (counte = 0; counte < document.querySelector("ol").childElementCount; counte++) {
@@ -435,7 +467,7 @@ if(document.querySelector("main#home") !== null) {
 }
 
 // Shipping
-if(document.querySelector("main#shipping") !== null) {
+if(document.querySelector("main#shipping")) {
   try{
     main.addEventListener('change', function(event){
       changeEventFunction(event);
@@ -446,6 +478,10 @@ if(document.querySelector("main#shipping") !== null) {
     });
   }
 
+  main.addEventListener('input', function(event){
+    removeError(event);
+  });
+
   main.addEventListener('click', function(event) {
     if (event.target === document.querySelector("#shipping form button")) {
       doForm(0);
@@ -455,15 +491,15 @@ if(document.querySelector("main#shipping") !== null) {
 }
 
 // Billing
-if(document.querySelector("main#billing") !== null) {
-  if(sessionStorage.getItem("billingShippingCheck") === "true"){
+if(document.querySelector("main#billing")) {
+  if(stor.getItem("billingShippingCheck") === "true"){
     document.querySelector("#billshipcheck").checked = true;
     for ( billCount = 0; billCount < document.querySelectorAll("form ol li:not(.notinput)").length; billCount++) {
       document.querySelectorAll("form ol li:not(.notinput)")[billCount].classList.toggle("hideinp");
     }
   }
   main.addEventListener('click', function(event) {
-    formDataBill = JSON.parse(sessionStorage.getItem("formData"));
+    formDataBill = JSON.parse(stor.getItem("formData"));
     if (event.target === document.querySelector("#billing form button[type='submit']")) {
       doForm(1);
       event.preventDefault();
@@ -484,10 +520,14 @@ if(document.querySelector("main#billing") !== null) {
       shippingCheck(event);
     });
   }
+
+  main.addEventListener('input', function(event){
+    removeError(event);
+  });
 }
 
 // Payment
-if(document.querySelector("main#payment") !== null) {
+if(document.querySelector("main#payment")) {
   main.addEventListener('click', function(event) {
     if (event.target === document.querySelector("#payment form button")) {
       doForm(2);
@@ -503,11 +543,14 @@ if(document.querySelector("main#payment") !== null) {
       changeEventFunction(event);
     });
   }
+  main.addEventListener('input', function(event){
+    removeError(event);
+  });
 }
 
 // Cart
-if(document.querySelector("main#cart") !== null) {
-  formDataReset = JSON.parse(sessionStorage.getItem("formData"));
+if(document.querySelector("main#cart")) {
+  formDataReset = JSON.parse(stor.getItem("formData"));
   if(formDataReset.formSubmission.shipping.country !== ""){
     formDataReset.formInput.shipping = formDataReset.formSubmission.shipping;
   }
@@ -517,7 +560,7 @@ if(document.querySelector("main#cart") !== null) {
   if(formDataReset.formSubmission.payment.name !== ""){
     formDataReset.formInput.payment = formDataReset.formSubmission.payment;
   }
-  sessionStorage.setItem("formData", JSON.stringify(formDataReset));
+  stor.setItem("formData", JSON.stringify(formDataReset));
   makeP("shipping-address", "shipping");
   makeP("billing-address", "billing");
   makeP("payment-info", "payment");
