@@ -94,6 +94,62 @@ main {
   overflow-x: hidden;
 }
 
+#home button:nth-child(1){
+  width: 100%;
+  height: 2em;
+  font-size: 0.9em;
+}
+
+#filter{
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+  position: fixed;
+  background: #E4F5FF;
+  display: flex;
+  flex-direction: column;
+  transition: 0.4s;
+  left: -100vw;
+}
+
+#filter li{
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 1em 0;
+  margin: 0 0.8em;
+}
+
+#filter li:nth-child(1){
+  margin: 0;
+}
+
+#filter li label, #filter fieldset legend{
+  font-size: 1.02em;
+  border-bottom: 0.09em solid #35B4FF;
+  margin-bottom: 0.3em;
+  width: max-content;
+  padding-right: 0.4em;
+}
+
+#filter li button{
+  width: 100%;
+  height: 2em;
+  font-size: 0.9em;
+}
+
+#filter li select, #filter li input{
+  outline: 0;
+  font-size: 0.833333em; /* 15/18 = 0.833333em*/
+  border: 0 solid gray;
+  padding: 0 0 0 0.4em; /* 6/15 = 0.4em*/
+  height: 2em;/* 24/18 = 1.6em*/
+  background-color: #CFEDFF;
+}
+
+#filter input ~ input{
+  margin-left: 1em;
+}
+
 form {
   padding: 0 1em;
   grid-column-start: 2;
@@ -295,6 +351,9 @@ a.edit + p {
   }
   .translate {
     right: 0;
+  }
+  .translatex {
+    left: 0!important;
   }
   .nothide {
     position: absolute;
