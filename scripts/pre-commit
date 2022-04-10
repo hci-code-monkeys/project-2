@@ -7,7 +7,7 @@ git stash push -q --keep-index --include-untracked --message $STASH_NAME
 FAILED_TESTS=0
 trap 'FAILED_TESTS=$((FAILED_TESTS+1))' ERR
 # List all test commands to be run
-backstop test
+npx backstop test
 #npx nightwatch
 
 STASHES=$(git stash list -1 | grep -o $STASH_NAME)
