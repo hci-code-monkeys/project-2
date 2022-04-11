@@ -100,7 +100,7 @@ main {
   font-size: 0.9em;
 }
 
-#filter{
+#filter {
   width: 100%;
   height: 100vh;
   overflow-y: scroll;
@@ -112,14 +112,14 @@ main {
   left: -100vw;
 }
 
-#filter li{
+#filter li {
   display: flex;
   flex-direction: column;
   padding: 0 0 1em 0;
   margin: 0 0.8em;
 }
 
-#filter li:nth-child(1){
+#filter li:nth-of-type(1) {
   margin: 0;
 }
 
@@ -131,13 +131,13 @@ main {
   padding-right: 0.4em;
 }
 
-#filter li button{
+#filter li button {
   width: 100%;
   height: 2em;
   font-size: 0.9em;
 }
 
-#filter li select, #filter li input{
+#filter li select, #filter li input {
   outline: 0;
   font-size: 0.833333em; /* 15/18 = 0.833333em*/
   border: 0 solid gray;
@@ -146,7 +146,7 @@ main {
   background-color: #CFEDFF;
 }
 
-#filter input ~ input{
+#filter input ~ input {
   margin-left: 1em;
 }
 
@@ -199,8 +199,8 @@ form ol .flex input, form ol .flex label {
   cursor: pointer;
 }
 
-form ol li input:hover, form ol li input:focus-within, form ol li input:focus {
-  background-color: #B1E2FF;
+li input:hover, li input:focus-within, li input:focus, li select:hover, li select:focus-within, li select:focus {
+  background-color: #B1E2FF!important;
 }
 
 form ol li input:focus-visible {
@@ -414,4 +414,54 @@ form li .error{
     margin-top: 1em;
   }
 
+  #home button:nth-of-type(1){
+    display: none;
+  }
+
+  #filter {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(7, max-content);
+    height: max-content;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    transition: none;
+  }
+
+  #filter li{
+    flex-direction: row;
+    font-size: 0.83em;
+    margin: 0 0.2em;
+  }
+
+  #filter input{
+    width: 5.5em;
+  }
+  #filter fieldset {
+    display: flex;
+  }
+
+  #filter fieldset legend {
+    float: left;
+  }
+
+  #filter legend, #filter label{
+    height: max-content;
+    margin-right: 0.4em;
+    padding-right: 0!important;
+  }
+
+  #price-filter input::before{
+    content:"$";
+    padding-left: 1em;
+  }
+
+  body #home #close-filter button:nth-of-type(1){
+    display: block;
+  }
+
+  select {
+    cursor: pointer;
+  }
 }
