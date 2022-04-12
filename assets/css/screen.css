@@ -150,6 +150,13 @@ main {
   margin-left: 1em;
 }
 
+#item-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 1em;
+  padding: 1em 0.6em;
+}
+
 form {
   padding: 0 1em;
   grid-column-start: 2;
@@ -383,6 +390,12 @@ a.edit + p {
   }
 }
 
+@media (min-width: 37.70em) { /* 600px/16em */
+  #item-grid{
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 form li .error{
   grid-column-start: 1;
   grid-column-end: -1;
@@ -459,6 +472,10 @@ form li .error{
 
   body #home #close-filter button:nth-of-type(1){
     display: block;
+  }
+
+  #item-grid{
+    grid-template-columns: repeat(4, 1fr);
   }
 
   select {
