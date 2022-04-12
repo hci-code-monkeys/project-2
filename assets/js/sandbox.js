@@ -7,11 +7,18 @@ var counte, formDataReset, formDataBill, billCount, stor;
 
 if(main.id === "home"){
   var closefilterbtn = document.querySelector("#close-filter");
+  var openfilterbtn = document.querySelector('#open-filter');
+  document.querySelector("#filter").querySelectorAll("li");
   function HideFilter() {
-    document.querySelector("#filter").id = "hide";
-    console.log("bruh");
+    filter.id = "hide";
+    openfilterbtn.id = "close-filter"
+  }
+  function ShowFilter(){
+    filter.id = "";
+    
   }
   closefilterbtn.addEventListener("click", HideFilter);
+  openfilterbtn.addEventListener("click", ShowFilter);
 }
 // Test to see if local storage is available, if not use session storage
 function localStorageTest(){
