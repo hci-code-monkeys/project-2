@@ -6,9 +6,9 @@ var main = document.querySelector("main");
 var counte, formDataReset, formDataBill, billCount, stor;
 
 if(main.id === "home"){
-  var closefilterbtn = document.querySelector("#closefilter");
+  var closefilterbtn = document.querySelector("#close-filter");
   function HideFilter() {
-    document.querySelector("#filter").classList.add = "hide";
+    document.querySelector("#filter").id = "hide";
     console.log("bruh");
   }
   closefilterbtn.addEventListener("click", HideFilter);
