@@ -61,6 +61,11 @@ header {
 .hide {
   display: none;
 }
+
+#hide {
+  display: none;
+}
+
 header #home-nav {
   align-self: center;
 }
