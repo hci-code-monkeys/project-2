@@ -214,6 +214,10 @@ header #second-nav a {
   margin: 1.5em auto 0 auto;
 }
 
+#item-grid li button.selected{
+  background-color: #FF2929;
+}
+
 #item-grid li figure img{
   height: 100%;
   min-width: 50px;
