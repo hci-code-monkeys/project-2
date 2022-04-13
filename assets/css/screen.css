@@ -61,6 +61,11 @@ header {
 .hide {
   display: none;
 }
+
+.hiden{
+  display: none;
+}
+
 header #home-nav {
   align-self: center;
 }
@@ -115,8 +120,12 @@ header #second-nav a {
 #filter li {
   display: flex;
   flex-direction: column;
-  padding: 0 0 1em 0;
+  padding: 0 0 0.3em 0;
   margin: 0 0.8em;
+}
+
+#filter li fieldset{
+  padding: 0;
 }
 
 #filter li:nth-of-type(1) {
@@ -541,9 +550,6 @@ a.edit + p {
     justify-content: space-evenly;
   }
 
-  #home button.hide{
-    display: none;
-  }
   .hide ul {
     display: flex;
     flex-direction: column;
