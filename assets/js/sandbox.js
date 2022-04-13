@@ -464,6 +464,13 @@ if(!stor.getItem("cart_selector")){
 
 // Home
 if(document.querySelector("main#home")) {
+  itemStatus = JSON.parse(stor.getItem("formData"));
+  for(item = 0; item < Object.keys(itemStatus.itemData).length; item++){
+    if(itemStatus.itemData[item + 1].selected === "true"){
+      document.querySelectorAll("#home>#item-grid>li")[item].childNodes[9].classList.toggle("selected");
+      document.querySelectorAll("#home>#item-grid>li")[item].childNodes[9].innerText = 'Remove from Cart';
+    }
+  }
   main.addEventListener('click', function(event) {
     if(event.target.parentElement === main && event.target.tagName === "BUTTON" ){
       event.target.classList.toggle("hiden");
@@ -477,12 +484,13 @@ if(document.querySelector("main#home")) {
     }
     if(event.target.parentElement.parentElement.id === "item-grid" && event.target.tagName === "BUTTON"){
       itemStatus = JSON.parse(stor.getItem("formData"));
+      event.target.classList.toggle("selected");
       if(itemStatus.itemData[event.target.parentElement.dataset.id].selected === "false"){
         itemStatus.itemData[event.target.parentElement.dataset.id].selected = "true";
-
+        event.target.innerText = 'Remove from Cart';
       } else {
         itemStatus.itemData[event.target.parentElement.dataset.id].selected = "false";
-        // Change text of button
+        event.target.innerText = 'Add to Cart';
       }
       stor.setItem("formData", JSON.stringify(itemStatus));
     }
@@ -588,11 +596,10 @@ if(document.querySelector("main#cart")) {
   if(formDataReset.formSubmission.payment.name !== ""){
     formDataReset.formInput.payment = formDataReset.formSubmission.payment;
   }
-  for(item = 0; item <= Object.keys(formDataReset.itemData).length; item++){
+  for(item = 0; item < Object.keys(formDataReset.itemData).length; item++){
     if(formDataReset.itemData[item + 1].selected === "true"){
       document.querySelectorAll("#shopping-cart>ul>li")[item].classList.toggle("remove");
     }
-
   }
   stor.setItem("formData", JSON.stringify(formDataReset));
   makeP("shipping-address", "shipping");
