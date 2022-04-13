@@ -245,6 +245,10 @@ header #second-nav a {
   padding: 0.1em;
 }
 
+#cart #shopping-cart ul li.remove{
+  display: none;
+}
+
 #cart #shopping-cart ul figure{
   height: inherit;
   width: 100px;
