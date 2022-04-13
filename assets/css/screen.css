@@ -592,8 +592,12 @@ form li .error{
     margin-top: 1em;
   }
 
-  #home button:nth-child(1){
+  #home #filter{
     display: none;
+  }
+
+  #home #filter.show{
+    display: grid;
   }
 
   #filter {
