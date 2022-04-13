@@ -1,7 +1,7 @@
 "use strict";
 
 var main = document.querySelector("main");
-var counter, formDataReset, formDataBill, billCount, stor;
+var counter, formDataReset, formDataBill, billCount, stor, itemStatus;
 
 function localStorageTest(){
   var test = 'test';
@@ -130,7 +130,7 @@ if(!stor.getItem("formData")){
         },
         itemData : {
           1 : {
-            selected: "false"
+            selected : "false"
           },
           2 : {
             selected : "false"
@@ -474,6 +474,17 @@ if(document.querySelector("main#home")) {
       event.target.parentElement.parentElement.classList.toggle("show");
       event.target.parentElement.parentElement.classList.toggle("translatex");
       document.querySelector("#home button").classList.toggle("hiden");
+    }
+    if(event.target.parentElement.parentElement.id === "item-grid" && event.target.tagName === "BUTTON"){
+      itemStatus = JSON.parse(stor.getItem("formData"));
+      if(itemStatus.itemData[event.target.parentElement.dataset.id].selected === "false"){
+        itemStatus.itemData[event.target.parentElement.dataset.id].selected = "true";
+
+      } else {
+        itemStatus.itemData[event.target.parentElement.dataset.id].selected = "false";
+        // Change text of button
+      }
+      stor.setItem("formData", JSON.stringify(itemStatus));
     }
     for (counter = 0; counter < document.querySelector("ol").childElementCount; counter++) {
       if ( event.target === document.querySelector("ol li:nth-of-type("+(counter+1)+") button")) {
