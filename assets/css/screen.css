@@ -451,7 +451,7 @@ body main#cart section {
 
 body main#cart #shopping-cart {
   margin-top: 1em;
-  max-height: 60vh;
+  max-height: 15em;
   padding-bottom: 1.2em;
 }
 
