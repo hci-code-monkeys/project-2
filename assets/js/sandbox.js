@@ -4,20 +4,36 @@
 var default_selector = [1, 2, 3, 4, 5, 6, 7, 8];
 var main = document.querySelector("main");
 var counte, formDataReset, formDataBill, billCount, stor;
+var hidden = false;
 
 if(main.id === "home"){
-  var closefilterbtn = document.querySelector("#close-filter");
-  var openfilterbtn = document.querySelector('#open-filter');
-  document.querySelector("#filter").querySelectorAll("li");
+  var buttontoggle = document.querySelector("#toggle-button");
+  var filter = document.querySelector("#filter").querySelectorAll("li");
   function HideFilter() {
-    filter.id = "hide";
-    openfilterbtn.id = "close-filter"
+    if(!hidden){
+      for(var i = 0; i < filter.length; i++){
+        filter[i].style.visibility = "hidden";
+        console.log(filter[i]);
+      }
+      buttontoggle.style.visibility = "visible"
+      buttontoggle.innerText = "Show Filter"
+      hidden = true;
+    }
+    else{
+      for(var i = 0; i < filter.length; i++){
+        filter[i].style.visibility = "visible";
+        console.log(filter[i]);
+      }
+      buttontoggle.innerText = "Hide Filter"
+      hidden = false;
+
+    }
   }
   function ShowFilter(){
     filter.id = "";
     
   }
-  closefilterbtn.addEventListener("click", HideFilter);
+  buttontoggle.addEventListener("click", HideFilter);
   openfilterbtn.addEventListener("click", ShowFilter);
 }
 // Test to see if local storage is available, if not use session storage
