@@ -1,45 +1,41 @@
 "use strict";
 
-// Add default styles to show which input is not valid
-var products = [
-  {name:"Wristwatch",
-    description:"Mobile wrist watch that tells time.",
-    image_url:"image_url",
-    price:""},
-  {name:"Wristwatch",
-    description:"Mobile wrist watch that tells time.",
-    image_url:"image_url",
-    price:""},
-  {name:"Wristwatch",
-    description:"Mobile wrist watch that tells time.",
-    image_url:"image_url",
-    price:""},
-  {name:"Wristwatch",
-    description:"Mobile wrist watch that tells time.",
-    image_url:"image_url",
-    price:""},
-  {name:"Wristwatch",
-    description:"Mobile wrist watch that tells time.",
-    image_url:"image_url",
-    price:""},
-  {name:"Wristwatch",
-    description:"Mobile wrist watch that tells time.",
-    image_url:"image_url",
-    price:""},
-  {name:"Wristwatch",
-    description:"Mobile wrist watch that tells time.",
-    image_url:"image_url",
-    price:""},
-  {name:"Wristwatch",
-    description:"Mobile wrist watch that tells time.",
-    image_url:"image_url",
-    price:""}
-];
 // Default selector in the event every object in array is needed e.g home page
 var default_selector = [1, 2, 3, 4, 5, 6, 7, 8];
 var main = document.querySelector("main");
 var counte, formDataReset, formDataBill, billCount, stor;
+var hidden = false;
 
+if(main.id === "home"){
+  var buttontoggle = document.querySelector("#toggle-button");
+  var filter = document.querySelector("#filter").querySelectorAll("li");
+  function HideFilter() {
+    if(!hidden){
+      for(var i = 0; i < filter.length; i++){
+        filter[i].style.visibility = "hidden";
+        console.log(filter[i]);
+      }
+      buttontoggle.style.visibility = "visible"
+      buttontoggle.innerText = "Show Filter"
+      hidden = true;
+    }
+    else{
+      for(var i = 0; i < filter.length; i++){
+        filter[i].style.visibility = "visible";
+        console.log(filter[i]);
+      }
+      buttontoggle.innerText = "Hide Filter"
+      hidden = false;
+
+    }
+  }
+  function ShowFilter(){
+    filter.id = "";
+    
+  }
+  buttontoggle.addEventListener("click", HideFilter);
+  openfilterbtn.addEventListener("click", ShowFilter);
+}
 // Test to see if local storage is available, if not use session storage
 function localStorageTest(){
   var test = 'test';

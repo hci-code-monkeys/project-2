@@ -61,6 +61,11 @@ header {
 .hide {
   display: none;
 }
+
+#hide {
+  display: none;
+}
+
 header #home-nav {
   align-self: center;
 }
@@ -634,7 +639,7 @@ form li .error{
     padding-left: 1em;
   }
 
-  body #home #close-filter button:nth-of-type(1){
+  body #home #filter-toggle button:nth-of-type(1){
     display: block;
   }
 
