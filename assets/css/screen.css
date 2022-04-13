@@ -213,10 +213,14 @@ header #second-nav a {
 #cart #shopping-cart ul{
   display: grid;
   grid-template-columns: 1fr;
+  height: 100%;
+  overflow-x: auto;
+  grid-gap: 1em;
 }
 
 #cart #shopping-cart ul ul{
   display: block;
+  overflow: auto;
 }
 
 
@@ -435,6 +439,8 @@ body main#cart section {
 
 body main#cart #shopping-cart {
   margin-top: 1em;
+  max-height: 60vh;
+  padding-bottom: 1.2em;
 }
 
 body main#cart #billing-address {
