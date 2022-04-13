@@ -61,11 +61,6 @@ header {
 .hide {
   display: none;
 }
-
-#hide {
-  display: none;
-}
-
 header #home-nav {
   align-self: center;
 }
@@ -298,6 +293,9 @@ header #second-nav a {
   grid-row: span 2;
 }
 
+.translatex {
+  left: 0!important;
+}
 
 /* Chrome, Safari, Edge, Opera */
 #cart #shopping-cart input::-webkit-outer-spin-button,
@@ -527,9 +525,7 @@ a.edit + p {
   .translate {
     right: 0;
   }
-  .translatex {
-    left: 0!important;
-  }
+
   .nothide {
     position: absolute;
     visibility: hidden;
@@ -639,7 +635,7 @@ form li .error{
     padding-left: 1em;
   }
 
-  body #home #filter-toggle button:nth-of-type(1){
+  body #home #close-filter button:nth-of-type(1){
     display: block;
   }
 
