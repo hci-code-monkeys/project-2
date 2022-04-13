@@ -464,8 +464,18 @@ if(!stor.getItem("cart_selector")){
 
 // Home
 if(document.querySelector("main#home")) {
-  makeOL(products, 'product-list', default_selector);
+  // makeOL(products, 'product-list', default_selector);
   main.addEventListener('click', function(event) {
+    if(event.target.parentElement === main && event.target.tagName === "BUTTON" ){
+      event.target.classList.toggle("hide");
+      document.querySelector("main#home #filter").classList.toggle("translatex");
+      document.querySelector("main#home #filter").classList.toggle("show");
+    }
+    if(event.target.parentElement.parentElement.id === "filter" && event.target.tagName === "BUTTON"){
+      event.target.parentElement.parentElement.classList.toggle("show");
+      event.target.parentElement.parentElement.classList.toggle("translatex");
+      document.querySelector("#home button").classList.toggle("hide");
+    }
     for (counter = 0; counter < document.querySelector("ol").childElementCount; counter++) {
       if ( event.target === document.querySelector("ol li:nth-of-type("+(counter+1)+") button")) {
         cartFunction(counter);
