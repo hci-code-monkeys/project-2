@@ -1,7 +1,7 @@
 "use strict";
 
 var main = document.querySelector("main");
-var counter, formDataReset, formDataBill, billCount, stor, itemStatus;
+var counter, formDataReset, formDataBill, billCount, stor, itemStatus, item;
 
 function localStorageTest(){
   var test = 'test';
@@ -587,6 +587,12 @@ if(document.querySelector("main#cart")) {
   }
   if(formDataReset.formSubmission.payment.name !== ""){
     formDataReset.formInput.payment = formDataReset.formSubmission.payment;
+  }
+  for(item = 0; item <= Object.keys(formDataReset.itemData).length; item++){
+    if(formDataReset.itemData[item + 1].selected === "true"){
+      document.querySelectorAll("#shopping-cart>ul>li")[item].classList.toggle("remove");
+    }
+
   }
   stor.setItem("formData", JSON.stringify(formDataReset));
   makeP("shipping-address", "shipping");
