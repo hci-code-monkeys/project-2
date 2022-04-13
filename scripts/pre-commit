@@ -8,7 +8,7 @@ FAILED_TESTS=0
 trap 'FAILED_TESTS=$((FAILED_TESTS+1))' ERR
 # List all test commands to be run
 npx backstop test
-npx nightwatch
+#npx nightwatch
 
 STASHES=$(git stash list -1 | grep -o $STASH_NAME)
 if [[ $STASHES == $STASH_NAME ]]; then

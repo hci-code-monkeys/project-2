@@ -90,10 +90,224 @@ header #second-nav a {
   text-decoration: none;
 }
 
-main {
+/* main {
   overflow-x: hidden;
+} */
+
+#home button:nth-child(1){
+  width: 100%;
+  height: 2em;
+  font-size: 0.9em;
 }
 
+#filter {
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+  position: fixed;
+  background: #E4F5FF;
+  display: flex;
+  flex-direction: column;
+  transition: 0.4s;
+  left: -100vw;
+}
+
+#filter li {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 1em 0;
+  margin: 0 0.8em;
+}
+
+#filter li:nth-of-type(1) {
+  margin: 0;
+}
+
+#filter li label, #filter fieldset legend{
+  font-size: 1.02em;
+  border-bottom: 0.09em solid #35B4FF;
+  margin-bottom: 0.3em;
+  width: max-content;
+  padding-right: 0.4em;
+}
+
+#filter li button {
+  width: 100%;
+  height: 2em;
+  font-size: 0.9em;
+}
+
+#filter li select, #filter li input {
+  outline: 0;
+  font-size: 0.833333em; /* 15/18 = 0.833333em*/
+  border: 0 solid gray;
+  padding: 0 0 0 0.4em; /* 6/15 = 0.4em*/
+  height: 2em;/* 24/18 = 1.6em*/
+  background-color: #CFEDFF;
+}
+
+#filter input ~ input {
+  margin-left: 1em;
+}
+
+#item-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(auto, calc(50% - 0.5em)));
+  grid-column-gap: 1em;
+  grid-row-gap: 1em;
+  padding: 1em 0.6em;
+  width: 100vw;
+}
+
+#item-grid li{
+  height: min-content;
+  padding-top: 0.2em;
+}
+
+#item-grid li figure{
+  height: 205px;
+  display: flex;
+  justify-content: center;
+}
+
+#item-grid li p{
+  /* width: max-content; */
+}
+
+#item-grid li p:nth-of-type(1){
+  float: left;
+}
+
+#item-grid li p:nth-of-type(2){
+  float: right;
+}
+
+#item-grid li a{
+  cursor: pointer;
+}
+
+#item-grid li a p{
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-bottom: 0.5em;
+}
+
+#item-grid li button{
+  max-width: 15em;
+  min-width: 90%;
+  height: 2.5em;
+  border: 0.16em solid #000;
+  background-color: transparent;
+  border-radius: 1em;
+  display: block;
+  margin: 1.5em auto 0 auto;
+}
+
+#item-grid li figure img{
+  height: 100%;
+  min-width: 50px;
+}
+
+#cart #shopping-cart ul{
+  display: grid;
+  grid-template-columns: 1fr;
+  height: 100%;
+  overflow-x: auto;
+  grid-gap: 1em;
+}
+
+#cart #shopping-cart ul ul{
+  display: block;
+  overflow: auto;
+}
+
+
+#cart #shopping-cart ul li{
+  height: 70px;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, max-content)) minmax(0, auto) repeat(3, minmax(0, max-content));
+  flex-direction: row;
+  align-items: center;
+  grid-column-gap: 0.2em;
+  padding: 0.1em;
+}
+
+#cart #shopping-cart ul figure{
+  height: inherit;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  grid-row: span 2;
+}
+
+#cart #shopping-cart ul li p:nth-of-type(1){
+  grid-column: span 2;
+  font-size: 1.4em;
+  font-weight: 600;
+  padding-left: 0.2em;
+}
+
+#cart #shopping-cart ul li p:nth-of-type(2){
+  grid-row: 2;
+  grid-column: 2;
+  font-size: 1.09em;
+}
+
+#cart #shopping-cart ul ul{
+  grid-row: 2;
+  grid-column: 3;
+  display: flex;
+  flex-direction: row;
+  margin-left: 0.9em;
+}
+
+#cart #shopping-cart ul ul li{
+  display: flex;
+  height: max-content;
+}
+
+#cart #shopping-cart ul ul li a{
+  font-size: 0.78em;
+}
+
+#cart #shopping-cart ul li button{/** Remember to change px to em**/
+  font-weight: bold;
+  font-size: 1em;
+  width: 1.2em;
+  background: rgb(121 172 202 / 70%);
+  padding: 0.1em 0.2em;
+  height: 1.2em;
+  text-align: center;
+}
+
+#cart #shopping-cart ul button:nth-of-type(1){
+  grid-column: 4;
+}
+
+#cart #shopping-cart ul li button,
+#cart #shopping-cart ul li input{
+  grid-row: span 2;
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+#cart #shopping-cart input::-webkit-outer-spin-button,
+#cart #shopping-cart input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+#cart #shopping-cart input[type=number] {
+  -moz-appearance: textfield;
+  width: 35px;
+  height: 35px;
+  text-align: center;
+}
 form {
   padding: 0 1em;
   grid-column-start: 2;
@@ -143,8 +357,8 @@ form ol .flex input, form ol .flex label {
   cursor: pointer;
 }
 
-form ol li input:hover, form ol li input:focus-within, form ol li input:focus {
-  background-color: #B1E2FF;
+li input:hover, li input:focus-within, li input:focus, li select:hover, li select:focus-within, li select:focus {
+  background-color: #B1E2FF!important;
 }
 
 form ol li input:focus-visible {
@@ -225,6 +439,8 @@ body main#cart section {
 
 body main#cart #shopping-cart {
   margin-top: 1em;
+  max-height: 60vh;
+  padding-bottom: 1.2em;
 }
 
 body main#cart #billing-address {
@@ -279,6 +495,16 @@ a.edit + p {
   content: "CVV: ";
 }
 
+@media (max-width: 250px) { /* 900px/16 = 56.25em*/
+  #filter fieldset{
+    grid-template-columns: 1fr;
+  }
+
+  #filter fieldset input ~ input{
+    margin-left: 0;
+  }
+}
+
 @media (max-width: 31.25em) { /* 500px/16em */
   main > nav {
     flex-direction: column;
@@ -295,6 +521,9 @@ a.edit + p {
   }
   .translate {
     right: 0;
+  }
+  .translatex {
+    left: 0!important;
   }
   .nothide {
     position: absolute;
@@ -321,6 +550,13 @@ a.edit + p {
     grid-column-start: 3;
     height: 100%;
     padding: 1em;
+  }
+}
+
+@media (min-width: 37.70em) { /* 600px/16em */
+  #item-grid{
+    grid-template-columns: repeat(3,  minmax(auto, calc(33.3333% - 0.66666em)));
+    padding: 1em 0.2em;
   }
 }
 
@@ -355,4 +591,59 @@ form li .error{
     margin-top: 1em;
   }
 
+  #home button:nth-child(1){
+    display: none;
+  }
+
+  #filter {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(7, max-content);
+    height: max-content;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    transition: none;
+  }
+
+  #filter li{
+    flex-direction: row;
+    font-size: 0.83em;
+    margin: 0 0.2em;
+  }
+
+  #filter input{
+    width: 5.5em;
+  }
+  #filter fieldset {
+    display: flex;
+  }
+
+  #filter fieldset legend {
+    float: left;
+  }
+
+  #filter legend, #filter label{
+    height: max-content;
+    margin-right: 0.4em;
+    padding-right: 0!important;
+  }
+
+  #price-filter input::before{
+    content:"$";
+    padding-left: 1em;
+  }
+
+  body #home #close-filter button:nth-of-type(1){
+    display: block;
+  }
+
+  #item-grid{
+    grid-template-columns: repeat(4, minmax(auto, calc(25% - 0.75em)));
+    padding: 1em 2.5em 1em 1.5em;
+  }
+
+  select {
+    cursor: pointer;
+  }
 }

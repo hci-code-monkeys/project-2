@@ -28,10 +28,11 @@
           </li>
         </ul>
       </nav>
-      <button class="nothide" type="button">Cart</button>
-      <button aria-hidden="true" type="button" class="hide">Cart</button>
+      <button class="nothide" type="button">Menu</button>
+      <button aria-hidden="true" type="button" class="hide">Menu</button>
     </header>
     <main id="home">
+      <button>Advanced filter</button>
       <nav class="hide" aria-hidden="true">
         <ul>
           <li>
@@ -54,8 +55,317 @@
           </li>
         </ul>
       </nav>
-      <ol id="product-list" aria-label="Products">
-
+      <ul id="filter" ><!-- Make individual filter red if  the input is invalid also delete the number if it's over bound then make the tab red then display error-->
+        <li id="close-filter">
+          <button>
+            - Close filter
+          </button>
+        </li>
+        <li id="category-filter">
+          <label for="categories">Categories</label>
+          <select name="categories">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+          </select>
+        </li>
+        <li id=price-filter>
+          <fieldset><!-- Semantic: We will use fieldset to group the more than one input together-->
+            <legend> Price Range </legend>
+            <!-- before should be the dollar sign --><input type="number" placeholder="350"/><!-- after should be a dash -->
+            <!-- before should be the dollar sign --><input type="number" placeholder="350"/>
+          </fieldset>
+        </li>
+        <li id="size-filter">
+          <label>Size</label>
+          <input type="number" placeholder="12" />
+          <!-- Accessibility: We will use US measuring system instead of British(Nigeria's) -->
+        </li>
+        <li id="material-filter">
+          <label for="categories">Material</label>
+          <select name="categories">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+          </select>
+        </li>
+        <li id="discounts-filter">
+          <label for="categories">Discounts</label>
+          <select name="categories">
+            <option value="volvo">Volvo</option><!-- 20% below -->
+            <option value="saab">Saab</option><!-- 40% below -->
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+          </select>
+        </li>
+      </ul>
+      <ol id="item-grid" aria-label="Items">
+        <li>
+          <figure>
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSIPjCg_9nSjbPBv_knQfFm-Wlljwwp_8Gk75_7N3hb5pz5H378bpFXz5GzWGUwDp-tmtAIMb5lYeV1usaGtlQqNEOVdEZPjyB9cEYSDHoGyvmbaFTdbxiK0Q0" alt="Nike shirt image"/><!-- Checkout srcset -->
+          </figure>
+          <p>Nike Shirt</p>
+          <p>$240</p>
+          <a href="#"><p>
+            Nike Shirt is a premium wool woven bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+          </p></a>
+          <button>Add to Cart</button>
+        </li>
+        <li>
+          <figure>
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSIPjCg_9nSjbPBv_knQfFm-Wlljwwp_8Gk75_7N3hb5pz5H378bpFXz5GzWGUwDp-tmtAIMb5lYeV1usaGtlQqNEOVdEZPjyB9cEYSDHoGyvmbaFTdbxiK0Q0" alt="Nike shirt image"/><!-- Checkout srcset -->
+          </figure>
+          <p>Nike Shirt</p>
+          <p>$240</p>
+          <a href="#"><p>
+            Nike Shirt is a premium wool woven bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+          </p></a>
+          <button>Add to Cart</button>
+        </li>
+        <li>
+          <figure>
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSIPjCg_9nSjbPBv_knQfFm-Wlljwwp_8Gk75_7N3hb5pz5H378bpFXz5GzWGUwDp-tmtAIMb5lYeV1usaGtlQqNEOVdEZPjyB9cEYSDHoGyvmbaFTdbxiK0Q0" alt="Nike shirt image"/><!-- Checkout srcset -->
+          </figure>
+          <p>Nike Shirt</p>
+          <p>$240</p>
+          <a href="#"><p>
+            Nike Shirt is a premium wool woven bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+          </p></a>
+          <button>Add to Cart</button>
+        </li>
+        <li>
+          <figure>
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSIPjCg_9nSjbPBv_knQfFm-Wlljwwp_8Gk75_7N3hb5pz5H378bpFXz5GzWGUwDp-tmtAIMb5lYeV1usaGtlQqNEOVdEZPjyB9cEYSDHoGyvmbaFTdbxiK0Q0" alt="Nike shirt image"/><!-- Checkout srcset -->
+          </figure>
+          <p>Nike Shirt</p>
+          <p>$240</p>
+          <a href="#"><p>
+            Nike Shirt is a premium wool woven bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+          </p></a>
+          <button>Add to Cart</button>
+        </li>
+        <li>
+          <figure>
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSIPjCg_9nSjbPBv_knQfFm-Wlljwwp_8Gk75_7N3hb5pz5H378bpFXz5GzWGUwDp-tmtAIMb5lYeV1usaGtlQqNEOVdEZPjyB9cEYSDHoGyvmbaFTdbxiK0Q0" alt="Nike shirt image"/><!-- Checkout srcset -->
+          </figure>
+          <p>Nike Shirt</p>
+          <p>$240</p>
+          <a href="#"><p>
+            Nike Shirt is a premium wool woven bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+          </p></a>
+          <button>Add to Cart</button>
+        </li>
+        <li>
+          <figure>
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSIPjCg_9nSjbPBv_knQfFm-Wlljwwp_8Gk75_7N3hb5pz5H378bpFXz5GzWGUwDp-tmtAIMb5lYeV1usaGtlQqNEOVdEZPjyB9cEYSDHoGyvmbaFTdbxiK0Q0" alt="Nike shirt image"/><!-- Checkout srcset -->
+          </figure>
+          <p>Nike Shirt</p>
+          <p>$240</p>
+          <a href="#"><p>
+            Nike Shirt is a premium wool woven bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+          </p></a>
+          <button>Add to Cart</button>
+        </li>
+        <li>
+          <figure>
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSIPjCg_9nSjbPBv_knQfFm-Wlljwwp_8Gk75_7N3hb5pz5H378bpFXz5GzWGUwDp-tmtAIMb5lYeV1usaGtlQqNEOVdEZPjyB9cEYSDHoGyvmbaFTdbxiK0Q0" alt="Nike shirt image"/><!-- Checkout srcset -->
+          </figure>
+          <p>Nike Shirt</p>
+          <p>$240</p>
+          <a href="#"><p>
+            Nike Shirt is a premium wool woven bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+          </p></a>
+          <button>Add to Cart</button>
+        </li>
+        <li>
+          <figure>
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSIPjCg_9nSjbPBv_knQfFm-Wlljwwp_8Gk75_7N3hb5pz5H378bpFXz5GzWGUwDp-tmtAIMb5lYeV1usaGtlQqNEOVdEZPjyB9cEYSDHoGyvmbaFTdbxiK0Q0" alt="Nike shirt image"/><!-- Checkout srcset -->
+          </figure>
+          <p>Nike Shirt</p>
+          <p>$240</p>
+          <a href="#"><p>
+            Nike Shirt is a premium wool woven bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+          </p></a>
+          <button>Add to Cart</button>
+        </li>
+        <li>
+          <figure>
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSIPjCg_9nSjbPBv_knQfFm-Wlljwwp_8Gk75_7N3hb5pz5H378bpFXz5GzWGUwDp-tmtAIMb5lYeV1usaGtlQqNEOVdEZPjyB9cEYSDHoGyvmbaFTdbxiK0Q0" alt="Nike shirt image"/><!-- Checkout srcset -->
+          </figure>
+          <p>Nike Shirt</p>
+          <p>$240</p>
+          <a href="#"><p>
+            Nike Shirt is a premium wool woven bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+          </p></a>
+          <button>Add to Cart</button>
+        </li>
+        <li>
+          <figure>
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSIPjCg_9nSjbPBv_knQfFm-Wlljwwp_8Gk75_7N3hb5pz5H378bpFXz5GzWGUwDp-tmtAIMb5lYeV1usaGtlQqNEOVdEZPjyB9cEYSDHoGyvmbaFTdbxiK0Q0" alt="Nike shirt image"/><!-- Checkout srcset -->
+          </figure>
+          <p>Nike Shirt</p>
+          <p>$240</p>
+          <a href="#"><p>
+            Nike Shirt is a premium wool woven bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+          </p></a>
+          <button>Add to Cart</button>
+        </li>
+        <li>
+          <figure>
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSIPjCg_9nSjbPBv_knQfFm-Wlljwwp_8Gk75_7N3hb5pz5H378bpFXz5GzWGUwDp-tmtAIMb5lYeV1usaGtlQqNEOVdEZPjyB9cEYSDHoGyvmbaFTdbxiK0Q0" alt="Nike shirt image"/><!-- Checkout srcset -->
+          </figure>
+          <p>Nike Shirt</p>
+          <p>$240</p>
+          <a href="#"><p>
+            Nike Shirt is a premium wool woven bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+          </p></a>
+          <button>Add to Cart</button>
+        </li>
+        <li>
+          <figure>
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSIPjCg_9nSjbPBv_knQfFm-Wlljwwp_8Gk75_7N3hb5pz5H378bpFXz5GzWGUwDp-tmtAIMb5lYeV1usaGtlQqNEOVdEZPjyB9cEYSDHoGyvmbaFTdbxiK0Q0" alt="Nike shirt image"/><!-- Checkout srcset -->
+          </figure>
+          <p>Nike Shirt</p>
+          <p>$240</p>
+          <a href="#"><p>
+            Nike Shirt is a premium wool woven bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+          </p></a>
+          <button>Add to Cart</button>
+        </li>
+        <li>
+          <figure>
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSIPjCg_9nSjbPBv_knQfFm-Wlljwwp_8Gk75_7N3hb5pz5H378bpFXz5GzWGUwDp-tmtAIMb5lYeV1usaGtlQqNEOVdEZPjyB9cEYSDHoGyvmbaFTdbxiK0Q0" alt="Nike shirt image"/><!-- Checkout srcset -->
+          </figure>
+          <p>Nike Shirt</p>
+          <p>$240</p>
+          <a href="#"><p>
+            Nike Shirt is a premium wool woven bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+          </p></a>
+          <button>Add to Cart</button>
+        </li>
+        <li>
+          <figure>
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSIPjCg_9nSjbPBv_knQfFm-Wlljwwp_8Gk75_7N3hb5pz5H378bpFXz5GzWGUwDp-tmtAIMb5lYeV1usaGtlQqNEOVdEZPjyB9cEYSDHoGyvmbaFTdbxiK0Q0" alt="Nike shirt image"/><!-- Checkout srcset -->
+          </figure>
+          <p>Nike Shirt</p>
+          <p>$240</p>
+          <a href="#"><p>
+            Nike Shirt is a premium wool woven bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+          </p></a>
+          <button>Add to Cart</button>
+        </li>
+        <li>
+          <figure>
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSIPjCg_9nSjbPBv_knQfFm-Wlljwwp_8Gk75_7N3hb5pz5H378bpFXz5GzWGUwDp-tmtAIMb5lYeV1usaGtlQqNEOVdEZPjyB9cEYSDHoGyvmbaFTdbxiK0Q0" alt="Nike shirt image"/><!-- Checkout srcset -->
+          </figure>
+          <p>Nike Shirt</p>
+          <p>$240</p>
+          <a href="#"><p>
+            Nike Shirt is a premium wool woven bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+          </p></a>
+          <button>Add to Cart</button>
+        </li>
+        <li>
+          <figure>
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSIPjCg_9nSjbPBv_knQfFm-Wlljwwp_8Gk75_7N3hb5pz5H378bpFXz5GzWGUwDp-tmtAIMb5lYeV1usaGtlQqNEOVdEZPjyB9cEYSDHoGyvmbaFTdbxiK0Q0" alt="Nike shirt image"/><!-- Checkout srcset -->
+          </figure>
+          <p>Nike Shirt</p>
+          <p>$240</p>
+          <a href="#"><p>
+            Nike Shirt is a premium wool woven bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+          </p></a>
+          <button>Add to Cart</button>
+        </li>
+        <li>
+          <figure>
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSIPjCg_9nSjbPBv_knQfFm-Wlljwwp_8Gk75_7N3hb5pz5H378bpFXz5GzWGUwDp-tmtAIMb5lYeV1usaGtlQqNEOVdEZPjyB9cEYSDHoGyvmbaFTdbxiK0Q0" alt="Nike shirt image"/><!-- Checkout srcset -->
+          </figure>
+          <p>Nike Shirt</p>
+          <p>$240</p>
+          <a href="#"><p>
+            Nike Shirt is a premium wool woven bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+          </p></a>
+          <button>Add to Cart</button>
+        </li>
+        <li>
+          <figure>
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSIPjCg_9nSjbPBv_knQfFm-Wlljwwp_8Gk75_7N3hb5pz5H378bpFXz5GzWGUwDp-tmtAIMb5lYeV1usaGtlQqNEOVdEZPjyB9cEYSDHoGyvmbaFTdbxiK0Q0" alt="Nike shirt image"/><!-- Checkout srcset -->
+          </figure>
+          <p>Nike Shirt</p>
+          <p>$240</p>
+          <a href="#"><p>
+            Nike Shirt is a premium wool woven bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+          </p></a>
+          <button>Add to Cart</button>
+        </li>
+        <li>
+          <figure>
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSIPjCg_9nSjbPBv_knQfFm-Wlljwwp_8Gk75_7N3hb5pz5H378bpFXz5GzWGUwDp-tmtAIMb5lYeV1usaGtlQqNEOVdEZPjyB9cEYSDHoGyvmbaFTdbxiK0Q0" alt="Nike shirt image"/><!-- Checkout srcset -->
+          </figure>
+          <p>Nike Shirt</p>
+          <p>$240</p>
+          <a href="#"><p>
+            Nike Shirt is a premium wool woven bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+          </p></a>
+          <button>Add to Cart</button>
+        </li>
+        <li>
+          <figure>
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSIPjCg_9nSjbPBv_knQfFm-Wlljwwp_8Gk75_7N3hb5pz5H378bpFXz5GzWGUwDp-tmtAIMb5lYeV1usaGtlQqNEOVdEZPjyB9cEYSDHoGyvmbaFTdbxiK0Q0" alt="Nike shirt image"/><!-- Checkout srcset -->
+          </figure>
+          <p>Nike Shirt</p>
+          <p>$240</p>
+          <a href="#"><p>
+            Nike Shirt is a premium wool woven bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+          </p></a>
+          <button>Add to Cart</button>
+        </li>
+        <li>
+          <figure>
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSIPjCg_9nSjbPBv_knQfFm-Wlljwwp_8Gk75_7N3hb5pz5H378bpFXz5GzWGUwDp-tmtAIMb5lYeV1usaGtlQqNEOVdEZPjyB9cEYSDHoGyvmbaFTdbxiK0Q0" alt="Nike shirt image"/><!-- Checkout srcset -->
+          </figure>
+          <p>Nike Shirt</p>
+          <p>$240</p>
+          <a href="#"><p>
+            Nike Shirt is a premium wool woven bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+          </p></a>
+          <button>Add to Cart</button>
+        </li>
+        <li>
+          <figure>
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSIPjCg_9nSjbPBv_knQfFm-Wlljwwp_8Gk75_7N3hb5pz5H378bpFXz5GzWGUwDp-tmtAIMb5lYeV1usaGtlQqNEOVdEZPjyB9cEYSDHoGyvmbaFTdbxiK0Q0" alt="Nike shirt image"/><!-- Checkout srcset -->
+          </figure>
+          <p>Nike Shirt</p>
+          <p>$240</p>
+          <a href="#"><p>
+            Nike Shirt is a premium wool woven bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+          </p></a>
+          <button>Add to Cart</button>
+        </li>
+        <li>
+          <figure>
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSIPjCg_9nSjbPBv_knQfFm-Wlljwwp_8Gk75_7N3hb5pz5H378bpFXz5GzWGUwDp-tmtAIMb5lYeV1usaGtlQqNEOVdEZPjyB9cEYSDHoGyvmbaFTdbxiK0Q0" alt="Nike shirt image"/><!-- Checkout srcset -->
+          </figure>
+          <p>Nike Shirt</p>
+          <p>$240</p>
+          <a href="#"><p>
+            Nike Shirt is a premium wool woven bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+          </p></a>
+          <button>Add to Cart</button>
+        </li>
+        <li>
+          <figure>
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSIPjCg_9nSjbPBv_knQfFm-Wlljwwp_8Gk75_7N3hb5pz5H378bpFXz5GzWGUwDp-tmtAIMb5lYeV1usaGtlQqNEOVdEZPjyB9cEYSDHoGyvmbaFTdbxiK0Q0" alt="Nike shirt image"/><!-- Checkout srcset -->
+          </figure>
+          <p>Nike Shirt</p>
+          <p>$240</p>
+          <a href="#"><p>
+            Nike Shirt is a premium wool woven bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+          </p></a>
+          <button>Add to Cart</button>
+        </li>
       </ol>
     </main>
     <footer>
