@@ -540,6 +540,10 @@ a.edit + p {
     align-self: center;
     justify-content: space-evenly;
   }
+
+  #home button.hide{
+    display: none;
+  }
   .hide ul {
     display: flex;
     flex-direction: column;
