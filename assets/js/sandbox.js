@@ -7,7 +7,7 @@ var counter, formDataReset, formDataBill, billCount, stor;
 var hidden = false;
 
 if(main.id === "home"){
-  var buttontoggle = document.querySelector("#toggle-button");
+  var buttonToggle = document.querySelector("#toggle-button");
   var advancedToggle = document.querySelector("#advanced-toggle");
   var filter = document.querySelector("#filter").querySelectorAll("li");
   function ToggleFilter() {
@@ -16,15 +16,15 @@ if(main.id === "home"){
         filter[i].style.visibility = "hidden";
         console.log(filter[i]);
       }
-      buttontoggle.style.visibility = "visible"
-      buttontoggle.innerText = "Show Filter"
+      buttonToggle.style.visibility = "visible"
+      buttonToggle.innerText = "Show Filter"
     }
     else{
       for(var i = 0; i < filter.length; i++){
         filter[i].style.visibility = "visible";
         console.log(filter[i]);
       }
-      buttontoggle.innerText = "Hide Filter"
+      buttonToggle.innerText = "Hide Filter"
     }
     hidden = !hidden;
   }
@@ -39,7 +39,7 @@ if(main.id === "home"){
     hidden = !hidden;
 
   }
-  buttontoggle.addEventListener("click", ToggleFilter);
+  buttonToggle.addEventListener("click", ToggleFilter);
   advancedToggle.addEventListener("click", ToggleAdvanced);
 
 
