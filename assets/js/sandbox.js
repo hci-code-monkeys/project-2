@@ -7,47 +7,47 @@ var counter, formDataReset, formDataBill, billCount, stor;
 var hidden = false;
 var advancedHidden = true;
 
-if(main.id === "home"){
-  var buttonToggle = document.querySelector("#toggle-button");
-  var advancedToggle = document.querySelector("#advanced-toggle");
-  var filer = document.querySelector("#filter");
-  var filterItems = document.querySelector("#filter").querySelectorAll("li");
-  function ToggleFilterItems() {
-    if(!hidden){
-      for(var i = 0; i < filterItems.length; i++){
-        filterItems[i].style.visibility = "hidden";
-        console.log(filterItems[i]);
-      }
-      buttonToggle.style.visibility = "visible"
-      buttonToggle.innerText = "Show Filter"
-    }
-    else{
-      for(var i = 0; i < filterItems.length; i++){
-        filterItems[i].style.visibility = "visible";
-        console.log(filterItems[i]);
-      }
-      buttonToggle.innerText = "Hide Filter"
-    }
-    hidden = !hidden;
-  }
-
-  function ToggleAdvanced() {
-    if(!advancedHidden){
-      filter.style.left = "-100vw"
-      advancedToggle.innerText = "Show Advanced Filter"
-    }
-    else {
-      filter.style.left = "0vw"
-      advancedToggle.innerText = "Hide Advanced Filter"
-
-    }
-    advancedHidden = !advancedHidden;
-  }
-  buttonToggle.addEventListener("click", ToggleFilterItems);
-  advancedToggle.addEventListener("click", ToggleAdvanced);
-
-
-}
+// if(main.id === "home"){
+//   var buttonToggle = document.querySelector("#toggle-button");
+//   var advancedToggle = document.querySelector("#advanced-toggle");
+//   var filer = document.querySelector("#filter");
+//   var filterItems = document.querySelector("#filter").querySelectorAll("li");
+//   function ToggleFilterItems() {
+//     if(!hidden){
+//       for(var i = 0; i < filterItems.length; i++){
+//         filterItems[i].style.visibility = "hidden";
+//         console.log(filterItems[i]);
+//       }
+//       buttonToggle.style.visibility = "visible"
+//       buttonToggle.innerText = "Show Filter"
+//     }
+//     else{
+//       for(var i = 0; i < filterItems.length; i++){
+//         filterItems[i].style.visibility = "visible";
+//         console.log(filterItems[i]);
+//       }
+//       buttonToggle.innerText = "Hide Filter"
+//     }
+//     hidden = !hidden;
+//   }
+//
+//   function ToggleAdvanced() {
+//     if(!advancedHidden){
+//       filter.style.left = "-100vw"
+//       advancedToggle.innerText = "Show Advanced Filter"
+//     }
+//     else {
+//       filter.style.left = "0vw"
+//       advancedToggle.innerText = "Hide Advanced Filter"
+//
+//     }
+//     advancedHidden = !advancedHidden;
+//   }
+//   buttonToggle.addEventListener("click", ToggleFilterItems);
+//   advancedToggle.addEventListener("click", ToggleAdvanced);
+//
+//
+// }
 // Test to see if local storage is available, if not use session storage
 function localStorageTest(){
   var test = 'test';
