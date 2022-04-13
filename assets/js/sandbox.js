@@ -3,13 +3,14 @@
 // Default selector in the event every object in array is needed e.g home page
 var default_selector = [1, 2, 3, 4, 5, 6, 7, 8];
 var main = document.querySelector("main");
-var counte, formDataReset, formDataBill, billCount, stor;
+var counter, formDataReset, formDataBill, billCount, stor;
 var hidden = false;
 
 if(main.id === "home"){
   var buttontoggle = document.querySelector("#toggle-button");
+  var advancedToggle = document.querySelector("#advanced-toggle");
   var filter = document.querySelector("#filter").querySelectorAll("li");
-  function HideFilter() {
+  function ToggleFilter() {
     if(!hidden){
       for(var i = 0; i < filter.length; i++){
         filter[i].style.visibility = "hidden";
@@ -17,7 +18,6 @@ if(main.id === "home"){
       }
       buttontoggle.style.visibility = "visible"
       buttontoggle.innerText = "Show Filter"
-      hidden = true;
     }
     else{
       for(var i = 0; i < filter.length; i++){
@@ -25,16 +25,24 @@ if(main.id === "home"){
         console.log(filter[i]);
       }
       buttontoggle.innerText = "Hide Filter"
-      hidden = false;
-
     }
+    hidden = !hidden;
   }
-  function ShowFilter(){
-    filter.id = "";
-    
+
+  function ToggleAdvanced() {
+    if(!hidden){
+      filter.style.left = "-100vw"
+    }
+    else {
+      filter.style.left = "0vw"
+    }
+    hidden = !hidden;
+
   }
-  buttontoggle.addEventListener("click", HideFilter);
-  openfilterbtn.addEventListener("click", ShowFilter);
+  buttontoggle.addEventListener("click", ToggleFilter);
+  advancedToggle.addEventListener("click", ToggleAdvanced);
+
+
 }
 // Test to see if local storage is available, if not use session storage
 function localStorageTest(){
@@ -454,9 +462,9 @@ if(!stor.getItem("cart_selector")){
 if(document.querySelector("main#home")) {
   makeOL(products, 'product-list', default_selector);
   main.addEventListener('click', function(event) {
-    for (counte = 0; counte < document.querySelector("ol").childElementCount; counte++) {
-      if ( event.target === document.querySelector("ol li:nth-of-type("+(counte+1)+") button")) {
-        cartFunction(counte);
+    for (counter = 0; counter < document.querySelector("ol").childElementCount; counter++) {
+      if ( event.target === document.querySelector("ol li:nth-of-type("+(counter+1)+") button")) {
+        cartFunction(counter);
       }
     }
   });
