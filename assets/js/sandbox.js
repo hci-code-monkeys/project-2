@@ -1,54 +1,8 @@
 "use strict";
 
-// Default selector in the event every object in array is needed e.g home page
-var default_selector = [1, 2, 3, 4, 5, 6, 7, 8];
 var main = document.querySelector("main");
 var counter, formDataReset, formDataBill, billCount, stor;
-var hidden = false;
-var advancedHidden = true;
 
-// if(main.id === "home"){
-//   var buttonToggle = document.querySelector("#toggle-button");
-//   var advancedToggle = document.querySelector("#advanced-toggle");
-//   var filer = document.querySelector("#filter");
-//   var filterItems = document.querySelector("#filter").querySelectorAll("li");
-//   function ToggleFilterItems() {
-//     if(!hidden){
-//       for(var i = 0; i < filterItems.length; i++){
-//         filterItems[i].style.visibility = "hidden";
-//         console.log(filterItems[i]);
-//       }
-//       buttonToggle.style.visibility = "visible"
-//       buttonToggle.innerText = "Show Filter"
-//     }
-//     else{
-//       for(var i = 0; i < filterItems.length; i++){
-//         filterItems[i].style.visibility = "visible";
-//         console.log(filterItems[i]);
-//       }
-//       buttonToggle.innerText = "Hide Filter"
-//     }
-//     hidden = !hidden;
-//   }
-//
-//   function ToggleAdvanced() {
-//     if(!advancedHidden){
-//       filter.style.left = "-100vw"
-//       advancedToggle.innerText = "Show Advanced Filter"
-//     }
-//     else {
-//       filter.style.left = "0vw"
-//       advancedToggle.innerText = "Hide Advanced Filter"
-//
-//     }
-//     advancedHidden = !advancedHidden;
-//   }
-//   buttonToggle.addEventListener("click", ToggleFilterItems);
-//   advancedToggle.addEventListener("click", ToggleAdvanced);
-//
-//
-// }
-// Test to see if local storage is available, if not use session storage
 function localStorageTest(){
   var test = 'test';
   try {
@@ -173,38 +127,84 @@ if(!stor.getItem("formData")){
             0 :  ["[0-9]", "Please fill out this field with numbers."],
             1 : ["^[0-9]{3,4}$", "Please input an integer within range of 3 to 4 numbers"]
           }
+        },
+        itemData : {
+          1 : {
+            selected: "false"
+          },
+          2 : {
+            selected : "false"
+          },
+          3 : {
+            selected : "false"
+          },
+          4 : {
+            selected : "false"
+          },
+          5 : {
+            selected : "false"
+          },
+          6 : {
+            selected : "false"
+          },
+          7 : {
+            selected : "false"
+          },
+          8 : {
+            selected : "false"
+          },
+          9 : {
+            selected : "false"
+          },
+          10 : {
+            selected : "false"
+          },
+          11 : {
+            selected : "false"
+          },
+          12 : {
+            selected : "false"
+          },
+          13 : {
+            selected : "false"
+          },
+          14 : {
+            selected : "false"
+          },
+          15 : {
+            selected : "false"
+          },
+          16 : {
+            selected : "false"
+          },
+          17 : {
+            selected : "false"
+          },
+          18 : {
+            selected : "false"
+          },
+          19 : {
+            selected : "false"
+          },
+          20 : {
+            selected : "false"
+          },
+          21 : {
+            selected : "false"
+          },
+          22 : {
+            selected : "false"
+          },
+          23 : {
+            selected : "false"
+          },
+          24 : {
+            selected : "false"
+          }
         }
       }
     )
   );
-}
-
-function makeOL(object, id, selected){
-  var i;
-  var listItems;
-
-  // Add appropriate number of list
-  for ( i = 0; i < selected.length; i++) {
-    document.getElementById(id).appendChild(document.createElement('li'));
-  }
-
-  listItems = document.getElementById(id).getElementsByTagName('li');
-  for ( i in selected ) {
-    listItems[i].appendChild(document.createElement('img'));
-    listItems[i].querySelector('img').src = object[i].image_url;
-    listItems[i].appendChild(document.createElement('p'));
-    listItems[i].querySelector('p').className = "name";
-    listItems[i].querySelector('p').innerHTML = object[i].name;
-    listItems[i].appendChild(document.createElement('p'));
-    listItems[i].querySelector('p:not(.name)').className = "description";
-    listItems[i].querySelector('p:not(.name)').innerHTML = object[i].description;
-    listItems[i].appendChild(document.createElement('p'));
-    listItems[i].querySelector('p:not(.name, .description)').className = "price";
-    listItems[i].querySelector('p:not(.name, .description)').innerHTML = object[i].price;
-    listItems[i].appendChild(document.createElement('button'));
-    listItems[i].querySelector('button').className = "cart";
-    listItems[i].querySelector('button').innerHTML = "Add cart";
-  }
 }
 
 function cartFunction(item) {
@@ -464,7 +464,6 @@ if(!stor.getItem("cart_selector")){
 
 // Home
 if(document.querySelector("main#home")) {
-  // makeOL(products, 'product-list', default_selector);
   main.addEventListener('click', function(event) {
     if(event.target.parentElement === main && event.target.tagName === "BUTTON" ){
       event.target.classList.toggle("hiden");
