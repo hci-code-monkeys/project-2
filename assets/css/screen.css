@@ -326,6 +326,10 @@ header #second-nav a {
   grid-row: span 2;
 }
 
+#cart #shopping-cart ul li button.onred{
+  background-color: #FF2929;
+}
+
 .translatex {
   left: 0!important;
 }
