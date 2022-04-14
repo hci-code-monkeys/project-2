@@ -513,6 +513,13 @@ if(!stor.getItem("cart_selector")){
 // Home
 if(document.querySelector("main#home")) {
   itemStatus = JSON.parse(stor.getItem("formData"));
+  if(typeof itemStatus.itemData == "undefined"){
+    var tag = document.createElement("p")
+    tag.innerText = "There has been an error with localstorage, please clear your localstorage and try again"
+    tag.style.margin = "1em"
+    tag.style.color = "rgb(255 0 0)"
+    document.querySelector("main#home").prepend(tag)
+  }
   for(item = 0; item < Object.keys(itemStatus.itemData).length; item++){
     if(itemStatus.itemData[item + 1].selected === "true"){
       document.querySelectorAll("#home>#item-grid>li")[item].childNodes[9].classList.toggle("selected");
@@ -521,6 +528,7 @@ if(document.querySelector("main#home")) {
   }
   main.addEventListener('click', function(event) {
     if(event.target.parentElement === main && event.target.tagName === "BUTTON" ){
+
       event.target.classList.toggle("hiden");
       document.querySelector("main#home #filter").classList.toggle("translatex");
       document.querySelector("main#home #filter").classList.toggle("show");
