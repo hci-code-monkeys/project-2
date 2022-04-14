@@ -131,99 +131,99 @@ if(!stor.getItem("formData")){
         itemData : {
           1 : {
             selected : "false",
-            quantity: 1
+            quantity: 0
           },
           2 : {
             selected : "false",
-            quantity: 1
+            quantity: 0
           },
           3 : {
             selected : "false",
-            quantity: 1
+            quantity: 0
           },
           4 : {
             selected : "false",
-            quantity: 1
+            quantity: 0
           },
           5 : {
             selected : "false",
-            quantity: 1
+            quantity: 0
           },
           6 : {
             selected : "false",
-            quantity: 1
+            quantity: 0
           },
           7 : {
             selected : "false",
-            quantity: 1
+            quantity: 0
           },
           8 : {
             selected : "false",
-            quantity: 1
+            quantity: 0
           },
           9 : {
             selected : "false",
-            quantity: 1
+            quantity: 0
           },
           10 : {
             selected : "false",
-            quantity: 1
+            quantity: 0
           },
           11 : {
             selected : "false",
-            quantity: 1
+            quantity: 0
           },
           12 : {
             selected : "false",
-            quantity: 1
+            quantity: 0
           },
           13 : {
             selected : "false",
-            quantity: 1
+            quantity: 0
           },
           14 : {
             selected : "false",
-            quantity: 1
+            quantity: 0
           },
           15 : {
             selected : "false",
-            quantity: 1
+            quantity: 0
           },
           16 : {
             selected : "false",
-            quantity: 1
+            quantity: 0
           },
           17 : {
             selected : "false",
-            quantity: 1
+            quantity: 0
           },
           18 : {
             selected : "false",
-            quantity: 1
+            quantity: 0
           },
           19 : {
             selected : "false",
-            quantity: 1
+            quantity: 0
           },
           20 : {
             selected : "false",
-            quantity: 1
+            quantity: 0
           },
           21 : {
             selected : "false",
-            quantity: 1
+            quantity: 0
           },
           22 : {
             selected : "false",
-            quantity: 1
+            quantity: 0
           },
           23 : {
             selected : "false",
-            quantity: 1
+            quantity: 0
           },
           24 : {
             selected : "false",
-            quantity: 1
+            quantity: 0
           }
         }
       }
@@ -620,11 +620,43 @@ if(document.querySelector("main#cart")) {
   if(formDataReset.formSubmission.payment.name !== ""){
     formDataReset.formInput.payment = formDataReset.formSubmission.payment;
   }
+  main.addEventListener('input', function(event){
+    console.log(event.target.value);
+    if(event.target.value === '1'){
+      event.target.parentElement.children["6"].classList.toggle("onred");
+    }
+  });
+
+  main.addEventListener('change', function(event){
+    if(parseInt(event.target.value) <= 0 && event.target.type === "number"){
+      event.target.parentElement.classList.toggle("remove");
+      formDataReset.itemData[event.target.parentElement.dataset.id].selected = "false";
+    }
+    stor.setItem("formData", JSON.stringify(formDataReset));
+  });
+
+  main.addEventListener('click', function(event){
+    if(event.target === event.target.parentElement.children["4"]){
+      event.target.parentElement.children["5"].value = parseInt(event.target.parentElement.children["5"].value) + 1;
+      formDataReset.itemData[event.target.parentElement.dataset.id].quantity = event.target.parentElement.children["5"].value;
+    } else if(event.target === event.target.parentElement.children["6"]){
+      event.target.parentElement.children["5"].value = parseInt(event.target.parentElement.children["5"].value) - 1;
+      formDataReset.itemData[event.target.parentElement.dataset.id].quantity = event.target.parentElement.children["5"].value;
+    }
+    if(parseInt(event.target.parentElement.children["5"].value) <= 0){
+      event.target.parentElement.classList.toggle("remove");
+      formDataReset.itemData[event.target.parentElement.dataset.id].selected = "false";
+    }
+    stor.setItem("formData", JSON.stringify(formDataReset));
+  });
+
   for(item = 0; item < Object.keys(formDataReset.itemData).length; item++){
     if(formDataReset.itemData[item + 1].selected === "true"){
       document.querySelectorAll("#shopping-cart>ul>li")[item].classList.toggle("remove");
     }
+    document.querySelectorAll("#shopping-cart>ul>li>input")[item].value = formDataReset.itemData[item + 1].quantity;
   }
+
   stor.setItem("formData", JSON.stringify(formDataReset));
   makeP("shipping-address", "shipping");
   makeP("billing-address", "billing");
