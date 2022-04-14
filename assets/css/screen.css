@@ -266,6 +266,10 @@ header #second-nav a {
   font-size: 1.4em;
   font-weight: 600;
   padding-left: 0.2em;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-bottom: 0.5em;
 }
 
 #cart #shopping-cart ul li p:nth-of-type(2){
