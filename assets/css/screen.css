@@ -171,6 +171,9 @@ header #second-nav a {
 #item-grid li{
   height: min-content;
   padding-top: 0.2em;
+  padding: 1em;
+  background: antiquewhite;
+  box-shadow: 0px 8px 14px 5px #c0e8ff;
 }
 
 #item-grid li figure{
@@ -183,8 +186,14 @@ header #second-nav a {
   /* width: max-content; */
 }
 
-#item-grid li p:nth-of-type(1){
-  float: left;
+#item-grid li>p:nth-of-type(1) {
+    float: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #56608f;
+    width: 50%;
+    font-size: 1.1em;
 }
 
 #item-grid li p:nth-of-type(2){
@@ -201,6 +210,7 @@ header #second-nav a {
   white-space: nowrap;
   text-overflow: ellipsis;
   padding-bottom: 0.5em;
+  font-size: 0.94em;
 }
 
 #item-grid li button{
@@ -211,7 +221,7 @@ header #second-nav a {
   background-color: transparent;
   border-radius: 1em;
   display: block;
-  margin: 1.5em auto 0 auto;
+  margin: 0.5em auto 0 auto;
 }
 
 #item-grid li button.selected{
@@ -582,6 +592,11 @@ a.edit + p {
   #item-grid{
     grid-template-columns: repeat(3,  minmax(auto, calc(33.3333% - 0.66666em)));
     padding: 1em 0.2em;
+  }
+
+  #item-grid li button{
+    min-width: 70%;
+    max-width: 70%;
   }
 }
 
