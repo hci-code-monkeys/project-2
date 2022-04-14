@@ -631,9 +631,13 @@ if(document.querySelector("main#cart")) {
   });
 
   main.addEventListener('change', function(event){
+    if(event.target.type === "number"){
+      formDataReset.itemData[event.target.parentElement.dataset.id].quantity = parseInt(event.target.value);
+    }
     if(parseInt(event.target.value) <= 0 && event.target.type === "number"){
       event.target.parentElement.classList.toggle("remove");
       formDataReset.itemData[event.target.parentElement.dataset.id].selected = "false";
+      formDataReset.itemData[event.target.parentElement.dataset.id].quantity = 0;
     }
     if(event.target.value === '1' && !event.target.classList.contains("onred")){
       event.target.parentElement.children["6"].classList.toggle("onred");
@@ -647,10 +651,10 @@ if(document.querySelector("main#cart")) {
     if(event.target.tagName === "BUTTON"){
       if(event.target === event.target.parentElement.children["4"]){
         event.target.parentElement.children["5"].value = parseInt(event.target.parentElement.children["5"].value) + 1;
-        formDataReset.itemData[event.target.parentElement.dataset.id].quantity = event.target.parentElement.children["5"].value;
+        formDataReset.itemData[event.target.parentElement.dataset.id].quantity = parseInt(event.target.parentElement.children["5"].value);
       } else if(event.target === event.target.parentElement.children["6"]){
         event.target.parentElement.children["5"].value = parseInt(event.target.parentElement.children["5"].value) - 1;
-        formDataReset.itemData[event.target.parentElement.dataset.id].quantity = event.target.parentElement.children["5"].value;
+        formDataReset.itemData[event.target.parentElement.dataset.id].quantity = parseInt(event.target.parentElement.children["5"].value);
       }
       if(parseInt(event.target.parentElement.children["5"].value) <= 0){
         event.target.parentElement.classList.toggle("remove");
