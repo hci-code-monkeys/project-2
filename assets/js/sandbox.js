@@ -130,76 +130,100 @@ if(!stor.getItem("formData")){
         },
         itemData : {
           1 : {
-            selected : "false"
+            selected : "false",
+            quantity: 1
           },
           2 : {
-            selected : "false"
+            selected : "false",
+            quantity: 1
           },
           3 : {
-            selected : "false"
+            selected : "false",
+            quantity: 1
           },
           4 : {
-            selected : "false"
+            selected : "false",
+            quantity: 1
           },
           5 : {
-            selected : "false"
+            selected : "false",
+            quantity: 1
           },
           6 : {
-            selected : "false"
+            selected : "false",
+            quantity: 1
           },
           7 : {
-            selected : "false"
+            selected : "false",
+            quantity: 1
           },
           8 : {
-            selected : "false"
+            selected : "false",
+            quantity: 1
           },
           9 : {
-            selected : "false"
+            selected : "false",
+            quantity: 1
           },
           10 : {
-            selected : "false"
+            selected : "false",
+            quantity: 1
           },
           11 : {
-            selected : "false"
+            selected : "false",
+            quantity: 1
           },
           12 : {
-            selected : "false"
+            selected : "false",
+            quantity: 1
           },
           13 : {
-            selected : "false"
+            selected : "false",
+            quantity: 1
           },
           14 : {
-            selected : "false"
+            selected : "false",
+            quantity: 1
           },
           15 : {
-            selected : "false"
+            selected : "false",
+            quantity: 1
           },
           16 : {
-            selected : "false"
+            selected : "false",
+            quantity: 1
           },
           17 : {
-            selected : "false"
+            selected : "false",
+            quantity: 1
           },
           18 : {
-            selected : "false"
+            selected : "false",
+            quantity: 1
           },
           19 : {
-            selected : "false"
+            selected : "false",
+            quantity: 1
           },
           20 : {
-            selected : "false"
+            selected : "false",
+            quantity: 1
           },
           21 : {
-            selected : "false"
+            selected : "false",
+            quantity: 1
           },
           22 : {
-            selected : "false"
+            selected : "false",
+            quantity: 1
           },
           23 : {
-            selected : "false"
+            selected : "false",
+            quantity: 1
           },
           24 : {
-            selected : "false"
+            selected : "false",
+            quantity: 1
           }
         }
       }
