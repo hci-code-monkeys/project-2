@@ -365,6 +365,18 @@ header #second-nav a {
   justify-content: space-between;
 }
 
+#cart #order-summary>ul>li>span{
+  width: 2.5em;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 0.4em;
+}
+
+#cart #order-summary>ul>li>span::after{
+  content: "x ";
+  flex: left;
+}
+
 #cart #order-summary li>p{
   font-size: 0.9em;
 }
@@ -373,7 +385,7 @@ header #second-nav a {
   display: none;
 }
 
-#cart #order-summary li>p:first-child{
+#cart #order-summary li>p:nth-of-type(1){
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
