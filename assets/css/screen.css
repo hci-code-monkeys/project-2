@@ -351,6 +351,8 @@ header #second-nav a {
 
 #cart #order-summary h4{
   padding-bottom: 0.5em;
+  display: block;
+  margin: 0;
 }
 
 #cart #order-summary h5{
@@ -401,6 +403,14 @@ header #second-nav a {
   border-radius: 1em;
   display: block;
   margin: 0.5em auto 0 auto
+}
+
+#cart #order-summary>span {
+    float: right;
+}
+
+#cart #order-summary>span::before{
+  content: "$";
 }
 
 form {
