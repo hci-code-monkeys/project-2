@@ -242,7 +242,7 @@ header #second-nav a {
   width: 100%;
   display: grid;
   grid-template-rows: 1fr 1fr;
-  grid-template-columns: repeat(2, minmax(0, max-content)) minmax(0, auto) repeat(3, minmax(0, max-content));
+  grid-template-columns: minmax(0, max-content) 3em minmax(0, auto) repeat(3, minmax(0, max-content));
   flex-direction: row;
   align-items: center;
   grid-column-gap: 0.2em;
