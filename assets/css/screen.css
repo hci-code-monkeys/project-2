@@ -270,6 +270,8 @@ header #second-nav a {
   white-space: nowrap;
   text-overflow: ellipsis;
   padding-bottom: 0.5em;
+  color: #56608f;
+    width: 65%;
 }
 
 #cart #shopping-cart ul li p:nth-of-type(2){
