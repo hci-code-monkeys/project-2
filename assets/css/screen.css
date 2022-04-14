@@ -610,6 +610,9 @@ form li .error{
 @media (min-width: 56.25em) { /* 900px/16 = 56.25em*/
   main {
     display: grid;
+    grid-template-columns: 1fr 56.25em 1fr; /* 900px/16 = 56.25em */
+  }
+  #cart{
     grid-template-columns: repeat(12, 1fr); /* 900px/16 = 56.25em */
   }
   #home {
