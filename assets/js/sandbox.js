@@ -1,7 +1,7 @@
 "use strict";
 
 var main = document.querySelector("main");
-var counter, formDataReset, formDataBill, billCount, stor, itemStatus, item;
+var counter, formDataReset, formDataBill, billCount, stor, itemStatus, item, sum;
 
 function localStorageTest(){
   var test = 'test';
@@ -131,99 +131,123 @@ if(!stor.getItem("formData")){
         itemData : {
           1 : {
             selected : "false",
-            quantity: 0
+            quantity: 0,
+            price: 65.00
           },
           2 : {
             selected : "false",
-            quantity: 0
+            quantity: 0,
+            price: 85.00
           },
           3 : {
             selected : "false",
-            quantity: 0
+            quantity: 0,
+            price: 55.00
           },
           4 : {
             selected : "false",
-            quantity: 0
+            quantity: 0,
+            price: 25.00
           },
           5 : {
             selected : "false",
-            quantity: 0
+            quantity: 0,
+            price: 60.00
           },
           6 : {
             selected : "false",
-            quantity: 0
+            quantity: 0,
+            price: 115.00
           },
           7 : {
             selected : "false",
-            quantity: 0
+            quantity: 0,
+            price: 45.00
           },
           8 : {
             selected : "false",
-            quantity: 0
+            quantity: 0,
+            price: 60.00
           },
           9 : {
             selected : "false",
-            quantity: 0
+            quantity: 0,
+            price: 30.00
           },
           10 : {
             selected : "false",
-            quantity: 0
+            quantity: 0,
+            price: 50.00
           },
           11 : {
             selected : "false",
-            quantity: 0
+            quantity: 0,
+            price: 75.00
           },
           12 : {
             selected : "false",
-            quantity: 0
+            quantity: 0,
+            price: 55.00
           },
           13 : {
             selected : "false",
-            quantity: 0
+            quantity: 0,
+            price: 30.00
           },
           14 : {
             selected : "false",
-            quantity: 0
+            quantity: 0,
+            price: 25.00
           },
           15 : {
             selected : "false",
-            quantity: 0
+            quantity: 0,
+            price: 45.00
           },
           16 : {
             selected : "false",
-            quantity: 0
+            quantity: 0,
+            price: 25.00
           },
           17 : {
             selected : "false",
-            quantity: 0
+            quantity: 0,
+            price: 30.00
           },
           18 : {
             selected : "false",
-            quantity: 0
+            quantity: 0,
+            price: 30.00
           },
           19 : {
             selected : "false",
-            quantity: 0
+            quantity: 0,
+            price: 40.00
           },
           20 : {
             selected : "false",
-            quantity: 0
+            quantity: 0,
+            price: 35.00
           },
           21 : {
             selected : "false",
-            quantity: 0
+            quantity: 0,
+            price: 40.00
           },
           22 : {
             selected : "false",
-            quantity: 0
+            quantity: 0,
+            price: 75.00
           },
           23 : {
             selected : "false",
-            quantity: 0
+            quantity: 0,
+            price: 25.00
           },
           24 : {
             selected : "false",
-            quantity: 0
+            quantity: 0,
+            price: 45.00
           }
         }
       }
@@ -622,6 +646,7 @@ if(document.querySelector("main#cart")) {
   if(formDataReset.formSubmission.payment.name !== ""){
     formDataReset.formInput.payment = formDataReset.formSubmission.payment;
   }
+  sum = 0;
   main.addEventListener('input', function(event){
     if(event.target.value === '1' && !event.target.classList.contains("onred")){
       event.target.parentElement.children["6"].classList.toggle("onred");
@@ -641,6 +666,13 @@ if(document.querySelector("main#cart")) {
       formDataReset.itemData[event.target.parentElement.dataset.id].quantity = 0;
     }
     document.querySelectorAll("#order-summary>ul>li>span")[event.target.parentElement.dataset.id - 1].innerText = formDataReset.itemData[event.target.parentElement.dataset.id].quantity;
+    sum = 0;
+    for(item = 0; item < Object.keys(formDataReset.itemData).length; item++){
+      sum += formDataReset.itemData[item + 1].quantity*formDataReset.itemData[item + 1].price;
+    }
+    document.querySelectorAll("#order-summary>span")[0].innerText = sum.toFixed(2);
+    document.querySelectorAll("#order-summary>span")[1].innerText = (sum*0.0625).toFixed(2);
+    document.querySelectorAll("#order-summary>span")[2].innerText = (sum*1.0625).toFixed(2);
     if(event.target.value === '1' && !event.target.classList.contains("onred")){
       event.target.parentElement.children["6"].classList.toggle("onred");
     }else if(event.target.classList.contains("onred")){
@@ -653,10 +685,18 @@ if(document.querySelector("main#cart")) {
     if(event.target.tagName === "BUTTON"){
       if(event.target === event.target.parentElement.children["4"]){
         event.target.parentElement.children["5"].value = parseInt(event.target.parentElement.children["5"].value) + 1;
+        sum += formDataReset.itemData[event.target.parentElement.dataset.id].price;
+        document.querySelectorAll("#order-summary>span")[0].innerText = sum.toFixed(2);
+        document.querySelectorAll("#order-summary>span")[1].innerText = (sum*0.0625).toFixed(2);
+        document.querySelectorAll("#order-summary>span")[2].innerText = (sum*1.0625).toFixed(2);
         document.querySelectorAll("#order-summary>ul>li>span")[event.target.parentElement.dataset.id - 1].innerText = event.target.parentElement.children["5"].value;
         formDataReset.itemData[event.target.parentElement.dataset.id].quantity = parseInt(event.target.parentElement.children["5"].value);
       } else if(event.target === event.target.parentElement.children["6"]){
         event.target.parentElement.children["5"].value = parseInt(event.target.parentElement.children["5"].value) - 1;
+        sum -= formDataReset.itemData[event.target.parentElement.dataset.id].price;
+        document.querySelectorAll("#order-summary>span")[0].innerText = sum.toFixed(2);
+        document.querySelectorAll("#order-summary>span")[1].innerText = (sum*0.0625).toFixed(2);
+        document.querySelectorAll("#order-summary>span")[2].innerText = (sum*1.0625).toFixed(2);
         document.querySelectorAll("#order-summary>ul>li>span")[event.target.parentElement.dataset.id - 1].innerText = event.target.parentElement.children["5"].value;
         formDataReset.itemData[event.target.parentElement.dataset.id].quantity = parseInt(event.target.parentElement.children["5"].value);
       }
@@ -674,8 +714,8 @@ if(document.querySelector("main#cart")) {
 
     stor.setItem("formData", JSON.stringify(formDataReset));
   });
-
   for(item = 0; item < Object.keys(formDataReset.itemData).length; item++){
+    sum += formDataReset.itemData[item + 1].quantity*formDataReset.itemData[item + 1].price;
     if(formDataReset.itemData[item + 1].selected === "true"){
       document.querySelectorAll("#shopping-cart>ul>li")[item].classList.toggle("remove");
       document.querySelectorAll("#order-summary>ul>li")[item].classList.toggle("remove");
@@ -686,6 +726,9 @@ if(document.querySelector("main#cart")) {
       document.querySelectorAll("#shopping-cart>ul>li>button")[2*item + 1].classList.toggle("onred");
     }
   }
+  document.querySelectorAll("#order-summary>span")[0].innerText = sum.toFixed(2);
+  document.querySelectorAll("#order-summary>span")[1].innerText = (sum*0.0625).toFixed(2);
+  document.querySelectorAll("#order-summary>span")[2].innerText = (sum*1.0625).toFixed(2);
 
   stor.setItem("formData", JSON.stringify(formDataReset));
   makeP("shipping-address", "shipping");
