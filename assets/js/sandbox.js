@@ -636,9 +636,11 @@ if(document.querySelector("main#cart")) {
     }
     if(parseInt(event.target.value) <= 0 && event.target.type === "number"){
       event.target.parentElement.classList.toggle("remove");
+      document.querySelectorAll("#order-summary>ul>li")[event.target.parentElement.dataset.id - 1].classList.toggle("remove");
       formDataReset.itemData[event.target.parentElement.dataset.id].selected = "false";
       formDataReset.itemData[event.target.parentElement.dataset.id].quantity = 0;
     }
+    document.querySelectorAll("#order-summary>ul>li>span")[event.target.parentElement.dataset.id - 1].innerText = formDataReset.itemData[event.target.parentElement.dataset.id].quantity;
     if(event.target.value === '1' && !event.target.classList.contains("onred")){
       event.target.parentElement.children["6"].classList.toggle("onred");
     }else if(event.target.classList.contains("onred")){
@@ -651,13 +653,16 @@ if(document.querySelector("main#cart")) {
     if(event.target.tagName === "BUTTON"){
       if(event.target === event.target.parentElement.children["4"]){
         event.target.parentElement.children["5"].value = parseInt(event.target.parentElement.children["5"].value) + 1;
+        document.querySelectorAll("#order-summary>ul>li>span")[event.target.parentElement.dataset.id - 1].innerText = event.target.parentElement.children["5"].value;
         formDataReset.itemData[event.target.parentElement.dataset.id].quantity = parseInt(event.target.parentElement.children["5"].value);
       } else if(event.target === event.target.parentElement.children["6"]){
         event.target.parentElement.children["5"].value = parseInt(event.target.parentElement.children["5"].value) - 1;
+        document.querySelectorAll("#order-summary>ul>li>span")[event.target.parentElement.dataset.id - 1].innerText = event.target.parentElement.children["5"].value;
         formDataReset.itemData[event.target.parentElement.dataset.id].quantity = parseInt(event.target.parentElement.children["5"].value);
       }
       if(parseInt(event.target.parentElement.children["5"].value) <= 0){
         event.target.parentElement.classList.toggle("remove");
+        document.querySelectorAll("#order-summary>ul>li")[event.target.parentElement.dataset.id - 1].classList.toggle("remove");
         formDataReset.itemData[event.target.parentElement.dataset.id].selected = "false";
       }
       if(event.target.parentElement.children["5"].value === '1' && !event.target.parentElement.children["6"].classList.contains("onred")){
@@ -673,8 +678,10 @@ if(document.querySelector("main#cart")) {
   for(item = 0; item < Object.keys(formDataReset.itemData).length; item++){
     if(formDataReset.itemData[item + 1].selected === "true"){
       document.querySelectorAll("#shopping-cart>ul>li")[item].classList.toggle("remove");
+      document.querySelectorAll("#order-summary>ul>li")[item].classList.toggle("remove");
     }
     document.querySelectorAll("#shopping-cart>ul>li>input")[item].value = formDataReset.itemData[item + 1].quantity;
+    document.querySelectorAll("#order-summary>ul>li>span")[item].innerText = formDataReset.itemData[item + 1].quantity;
     if(document.querySelectorAll("#shopping-cart>ul>li>input")[item].value === '1' && !document.querySelectorAll("#shopping-cart>ul>li>input")[item].classList.contains("onred")){
       document.querySelectorAll("#shopping-cart>ul>li>button")[2*item + 1].classList.toggle("onred");
     }
