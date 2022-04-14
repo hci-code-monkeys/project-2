@@ -683,6 +683,8 @@ form li .error{
   }
   #cart{
     grid-template-columns: repeat(12, 1fr); /* 900px/16 = 56.25em */
+    grid-column-gap: 1.5em!important;
+    grid-row-gap: 1.2em!important;
   }
   #home {
     display: block;
@@ -691,24 +693,29 @@ form li .error{
     grid-column: span 8;
     grid-row: 1;
     margin-top: 0!important;
+    margin-right: 0;
   }
   #cart #order-summary{
     grid-column: span 4;
     grid-row-start: 1;
     grid-row: span 3;
+    margin-left: 0;
   }
   #cart #shipping-address{
     grid-column: span 4;
     grid-row:2;
+    margin-right: 0;
   }
   #cart #payment-info{
     grid-column: span 4;
     grid-row:2;
+    margin: 0;
   }
   #cart #billing-address{
     grid-column: span 4;
     grid-row:3;
     margin-bottom: 0!important;
+    margin-right: 0;
   }
 
   /* #cart #shipping-address, #cart #payment-info, #cart #billing-address {
