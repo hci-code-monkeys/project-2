@@ -2,6 +2,229 @@
 
 var main = document.querySelector("main");
 var counter, formDataReset, formDataBill, billCount, stor, itemStatus, item, sum;
+var fomrx = {
+  formSubmission : {
+    shipping : {
+      country : "",
+      fullname: "",
+      phonenumber : "",
+      address1 : "",
+      address2 : "",
+      state : "",
+      city : "",
+      zip : ""
+    },
+    billing : {
+      country : "",
+      fullname: "",
+      phonenumber : "",
+      address1 : "",
+      address2 : "",
+      state : "",
+      city : "",
+      zip : ""
+    },
+    payment : {
+      name : "",
+      number : "",
+      expiry : "",
+      cvv : ""
+    }
+  },
+  formInput : {
+    shipping : {
+      country : "",
+      fullname: "",
+      phonenumber : "",
+      address1 : "",
+      address2 : "",
+      state : "",
+      city : "",
+      zip : ""
+    },
+    billing : {
+      country : "",
+      fullname: "",
+      phonenumber : "",
+      address1 : "",
+      address2 : "",
+      state : "",
+      city : "",
+      zip : ""
+    },
+    payment : {
+      name : "",
+      number : "",
+      expiry : "",
+      cvv : ""
+    }
+  },
+  errorInstruction : {
+    country : {
+      0 : ["[a-zA-Z]", "Please fill out this field with characters."]
+    },
+    fullname : {
+      0 : ["[a-zA-Z]", "Please fill out this field with characters."],
+      1 : ["\\w \\w", "Please enter a second name for better indentification"]
+    },
+    phonenumber : {
+      0 :  ["/+|[0-9]", "Please fill out this field with numbers."],
+      1 : ["^(?:[+\\d][0-9]+)$", "Phone number must have integers or + for area code"]
+    },
+    address1 : {
+      0 :  ["[a-zA-Z]", "Please fill out this field with characters."],
+      1 : ["\\w \\w", "Please enter more information for better transportation"]
+    },
+    state : {
+      0 :  ["[a-zA-Z]", "Please fill out this field with characters."]
+    },
+    city : {
+      0 :  ["[a-zA-Z]", "Please fill out this field with characters."]
+    },
+    zip : {
+      0 :  ["[0-9]", "Please fill out this field with numbers."],
+      1 : ["^[0-9]{5}$", "Zip code can only be five digits long"]
+    },
+    name : {
+      0 :   ["[a-zA-Z]", "Please fill out this field with characters."],
+      1 : ["\\w \\w", "Please enter the second name and initial from card"]
+    },
+    number : {
+      0 :  ["[0-9]", "Please fill out this field with numbers."],
+      1 : ["^[0-9]+$", "Please input integers only for card number"]
+    },
+    expiry : {
+      0 :  ["//|[0-9]", "Please fill out this field with date format."]
+    },
+    cvv : {
+      0 :  ["[0-9]", "Please fill out this field with numbers."],
+      1 : ["^[0-9]{3,4}$", "Please input an integer within range of 3 to 4 numbers"]
+    }
+  },
+  itemData : {
+    1 : {
+      selected : "false",
+      quantity: 0,
+      price: 65.00
+    },
+    2 : {
+      selected : "false",
+      quantity: 0,
+      price: 85.00
+    },
+    3 : {
+      selected : "false",
+      quantity: 0,
+      price: 55.00
+    },
+    4 : {
+      selected : "false",
+      quantity: 0,
+      price: 25.00
+    },
+    5 : {
+      selected : "false",
+      quantity: 0,
+      price: 60.00
+    },
+    6 : {
+      selected : "false",
+      quantity: 0,
+      price: 115.00
+    },
+    7 : {
+      selected : "false",
+      quantity: 0,
+      price: 45.00
+    },
+    8 : {
+      selected : "false",
+      quantity: 0,
+      price: 60.00
+    },
+    9 : {
+      selected : "false",
+      quantity: 0,
+      price: 30.00
+    },
+    10 : {
+      selected : "false",
+      quantity: 0,
+      price: 50.00
+    },
+    11 : {
+      selected : "false",
+      quantity: 0,
+      price: 75.00
+    },
+    12 : {
+      selected : "false",
+      quantity: 0,
+      price: 55.00
+    },
+    13 : {
+      selected : "false",
+      quantity: 0,
+      price: 30.00
+    },
+    14 : {
+      selected : "false",
+      quantity: 0,
+      price: 25.00
+    },
+    15 : {
+      selected : "false",
+      quantity: 0,
+      price: 45.00
+    },
+    16 : {
+      selected : "false",
+      quantity: 0,
+      price: 25.00
+    },
+    17 : {
+      selected : "false",
+      quantity: 0,
+      price: 30.00
+    },
+    18 : {
+      selected : "false",
+      quantity: 0,
+      price: 30.00
+    },
+    19 : {
+      selected : "false",
+      quantity: 0,
+      price: 40.00
+    },
+    20 : {
+      selected : "false",
+      quantity: 0,
+      price: 35.00
+    },
+    21 : {
+      selected : "false",
+      quantity: 0,
+      price: 40.00
+    },
+    22 : {
+      selected : "false",
+      quantity: 0,
+      price: 75.00
+    },
+    23 : {
+      selected : "false",
+      quantity: 0,
+      price: 25.00
+    },
+    24 : {
+      selected : "false",
+      quantity: 0,
+      price: 45.00
+    }
+  },
+  token : 1
+};
 
 function localStorageTest(){
   var test = 'test';
@@ -16,243 +239,24 @@ function localStorageTest(){
 
 if(localStorageTest() === true){
   stor = localStorage;
-  console.log("We are using localStorage");
 }else{
   stor = sessionStorage;
-  console.log("We are using sessionStorage");
 }
-console.log(stor);
 if(!stor.getItem("formData")){
   stor.setItem("billingShippingCheck", "false");
 }
 
 if(!stor.getItem("formData")){
   stor.setItem("formData",
-    JSON.stringify(
-      {
-        formSubmission : {
-          shipping : {
-            country : "",
-            fullname: "",
-            phonenumber : "",
-            address1 : "",
-            address2 : "",
-            state : "",
-            city : "",
-            zip : ""
-          },
-          billing : {
-            country : "",
-            fullname: "",
-            phonenumber : "",
-            address1 : "",
-            address2 : "",
-            state : "",
-            city : "",
-            zip : ""
-          },
-          payment : {
-            name : "",
-            number : "",
-            expiry : "",
-            cvv : ""
-          }
-        },
-        formInput : {
-          shipping : {
-            country : "",
-            fullname: "",
-            phonenumber : "",
-            address1 : "",
-            address2 : "",
-            state : "",
-            city : "",
-            zip : ""
-          },
-          billing : {
-            country : "",
-            fullname: "",
-            phonenumber : "",
-            address1 : "",
-            address2 : "",
-            state : "",
-            city : "",
-            zip : ""
-          },
-          payment : {
-            name : "",
-            number : "",
-            expiry : "",
-            cvv : ""
-          }
-        },
-        errorInstruction : {
-          country : {
-            0 : ["[a-zA-Z]", "Please fill out this field with characters."]
-          },
-          fullname : {
-            0 : ["[a-zA-Z]", "Please fill out this field with characters."],
-            1 : ["\\w \\w", "Please enter a second name for better indentification"]
-          },
-          phonenumber : {
-            0 :  ["/+|[0-9]", "Please fill out this field with numbers."],
-            1 : ["^(?:[+\\d][0-9]+)$", "Phone number must have integers or + for area code"]
-          },
-          address1 : {
-            0 :  ["[a-zA-Z]", "Please fill out this field with characters."],
-            1 : ["\\w \\w", "Please enter more information for better transportation"]
-          },
-          state : {
-            0 :  ["[a-zA-Z]", "Please fill out this field with characters."]
-          },
-          city : {
-            0 :  ["[a-zA-Z]", "Please fill out this field with characters."]
-          },
-          zip : {
-            0 :  ["[0-9]", "Please fill out this field with numbers."],
-            1 : ["^[0-9]{5}$", "Zip code can only be five digits long"]
-          },
-          name : {
-            0 :   ["[a-zA-Z]", "Please fill out this field with characters."],
-            1 : ["\\w \\w", "Please enter the second name and initial from card"]
-          },
-          number : {
-            0 :  ["[0-9]", "Please fill out this field with numbers."],
-            1 : ["^[0-9]+$", "Please input integers only for card number"]
-          },
-          expiry : {
-            0 :  ["//|[0-9]", "Please fill out this field with date format."]
-          },
-          cvv : {
-            0 :  ["[0-9]", "Please fill out this field with numbers."],
-            1 : ["^[0-9]{3,4}$", "Please input an integer within range of 3 to 4 numbers"]
-          }
-        },
-        itemData : {
-          1 : {
-            selected : "false",
-            quantity: 0,
-            price: 65.00
-          },
-          2 : {
-            selected : "false",
-            quantity: 0,
-            price: 85.00
-          },
-          3 : {
-            selected : "false",
-            quantity: 0,
-            price: 55.00
-          },
-          4 : {
-            selected : "false",
-            quantity: 0,
-            price: 25.00
-          },
-          5 : {
-            selected : "false",
-            quantity: 0,
-            price: 60.00
-          },
-          6 : {
-            selected : "false",
-            quantity: 0,
-            price: 115.00
-          },
-          7 : {
-            selected : "false",
-            quantity: 0,
-            price: 45.00
-          },
-          8 : {
-            selected : "false",
-            quantity: 0,
-            price: 60.00
-          },
-          9 : {
-            selected : "false",
-            quantity: 0,
-            price: 30.00
-          },
-          10 : {
-            selected : "false",
-            quantity: 0,
-            price: 50.00
-          },
-          11 : {
-            selected : "false",
-            quantity: 0,
-            price: 75.00
-          },
-          12 : {
-            selected : "false",
-            quantity: 0,
-            price: 55.00
-          },
-          13 : {
-            selected : "false",
-            quantity: 0,
-            price: 30.00
-          },
-          14 : {
-            selected : "false",
-            quantity: 0,
-            price: 25.00
-          },
-          15 : {
-            selected : "false",
-            quantity: 0,
-            price: 45.00
-          },
-          16 : {
-            selected : "false",
-            quantity: 0,
-            price: 25.00
-          },
-          17 : {
-            selected : "false",
-            quantity: 0,
-            price: 30.00
-          },
-          18 : {
-            selected : "false",
-            quantity: 0,
-            price: 30.00
-          },
-          19 : {
-            selected : "false",
-            quantity: 0,
-            price: 40.00
-          },
-          20 : {
-            selected : "false",
-            quantity: 0,
-            price: 35.00
-          },
-          21 : {
-            selected : "false",
-            quantity: 0,
-            price: 40.00
-          },
-          22 : {
-            selected : "false",
-            quantity: 0,
-            price: 75.00
-          },
-          23 : {
-            selected : "false",
-            quantity: 0,
-            price: 25.00
-          },
-          24 : {
-            selected : "false",
-            quantity: 0,
-            price: 45.00
-          }
-        }
-      }
-    )
+    JSON.stringify(fomrx)
   );
+}
+
+if(JSON.parse(stor.getItem("formData")).token !== fomrx.token){
+  if(window.confirm("Your local storage is not up to date. Do you want to update your local storage")){
+    stor.clear();
+    location.reload();
+  }
 }
 
 function cartFunction(item) {
@@ -513,13 +517,6 @@ if(!stor.getItem("cart_selector")){
 // Home
 if(document.querySelector("main#home")) {
   itemStatus = JSON.parse(stor.getItem("formData"));
-  if(typeof itemStatus.itemData == "undefined"){
-    var tag = document.createElement("p")
-    tag.innerText = "There has been an error with localstorage, please clear your localstorage and try again"
-    tag.style.margin = "1em"
-    tag.style.color = "rgb(255 0 0)"
-    document.querySelector("main#home").prepend(tag)
-  }
   for(item = 0; item < Object.keys(itemStatus.itemData).length; item++){
     if(itemStatus.itemData[item + 1].selected === "true"){
       document.querySelectorAll("#home>#item-grid>li")[item].childNodes[9].classList.toggle("selected");
@@ -528,7 +525,6 @@ if(document.querySelector("main#home")) {
   }
   main.addEventListener('click', function(event) {
     if(event.target.parentElement === main && event.target.tagName === "BUTTON" ){
-
       event.target.classList.toggle("hiden");
       document.querySelector("main#home #filter").classList.toggle("translatex");
       document.querySelector("main#home #filter").classList.toggle("show");
