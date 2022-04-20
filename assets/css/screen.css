@@ -240,16 +240,18 @@ header #second-nav a {
   max-width: 15em;
   min-width: 90%;
   height: 2.5em;
-  border: 0.16em solid #3E4146;
+  border: 0.16em solid #B1E2FF;
   background-color: transparent;
   border-radius: 1em;
   display: block;
   margin: 0.5em auto 0 auto;
+  background-color: #B1E2FF;
 }
 
 #item-grid li button.selected{
   border-color: #FFACAC;
   color: #FF2929;
+  background-color: #FFACAC;
 }
 
 #item-grid li figure img{
@@ -817,8 +819,16 @@ form li .error{
     background-color: rgb(177 226 255);
   }
 
+  #item-grid li button{
+    background-color: transparent;
+  }
+
   #item-grid li button:hover{
     background-color: #B1E2FF;
+  }
+
+  #item-grid li button.selected{
+    background-color: transparent;
   }
 
   #item-grid li button.selected:hover{
