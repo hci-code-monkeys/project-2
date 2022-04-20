@@ -46,11 +46,6 @@ html {
   border-radius: 0.4em;
 }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #2E4E61;
-}
-
 /* End of scrollbar design */
 
 input[type="checkbox"] {
@@ -112,10 +107,6 @@ header #second-nav ul {
 
 header button, header nav a {
   font-size: 0.77778em; /* 14/18 = */
-}
-
-button:hover {
-  background-color: rgb(177 226 255);
 }
 
 nav.hide li a {
@@ -256,17 +247,9 @@ header #second-nav a {
   margin: 0.5em auto 0 auto;
 }
 
-#item-grid li button:hover{
-  background-color: #B1E2FF;
-}
-
 #item-grid li button.selected{
   border-color: #FFACAC;
   color: #FF2929;
-}
-
-#item-grid li button.selected:hover{
-  background-color: #FFACAC;
 }
 
 #item-grid li figure img{
@@ -396,7 +379,6 @@ header #second-nav a {
   border-radius: 0.4em;
 }
 
-#cart #shopping-cart input[type=number]:hover,
 #cart #shopping-cart input[type=number]:focus-within,
 #cart #shopping-cart input[type=number]:focus {
   background-color: #fff!important;
@@ -457,10 +439,6 @@ header #second-nav a {
   margin: 0.5em auto 0 auto
 }
 
-#cart #order-summary button:hover{
-  background-color: rgb(121 172 202 / 90%);
-}
-
 #cart #order-summary>span {
     float: right;
 }
@@ -518,7 +496,7 @@ form ol .flex input, form ol .flex label {
   cursor: pointer;
 }
 
-li input:hover, li input:focus-within, li input:focus, li select:hover, li select:focus-within, li select:focus {
+li input:focus-within, li input:focus, li select:focus-within, li select:focus {
   background-color: #B1E2FF!important;
 }
 
@@ -558,10 +536,6 @@ form ol .flex {
   align-items: baseline;
 }
 
-nav li:hover {
-  border-color: #35B4FF;
-}
-
 nav.hide {
   background-color: #E4F5FF;
 }
@@ -576,11 +550,6 @@ li.location {
   border-bottom: 0.09em solid #35B4FF;
   padding: 0 0.3em;
   margin: 0 0.3em;
-}
-
-li.location:hover {
-  padding: 0 0.6em;
-  margin: 0;
 }
 
 /* Review Design */
@@ -834,5 +803,46 @@ form li .error{
 
   select {
     cursor: pointer;
+  }
+}
+
+@media (hover: hover) {
+  /* Scrollbar */
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2E4E61;
+  }
+
+  button:hover {
+    background-color: rgb(177 226 255);
+  }
+
+  #item-grid li button:hover{
+    background-color: #B1E2FF;
+  }
+
+  #item-grid li button.selected:hover{
+    background-color: #FFACAC;
+  }
+
+  #cart #shopping-cart input[type=number]:hover{
+    background-color: #fff!important;
+  }
+
+  #cart #order-summary button:hover{
+    background-color: rgb(121 172 202 / 90%);
+  }
+
+  li input:hover, li select:hover{
+    background-color: #B1E2FF!important;
+  }
+
+  nav li:hover {
+    border-color: #35B4FF;
+  }
+
+  li.location:hover {
+    padding: 0 0.6em;
+    margin: 0;
   }
 }
