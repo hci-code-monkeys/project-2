@@ -21,6 +21,37 @@ html {
   background-color: #E4F5FF;
 }
 
+/* Scrollbar design */
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2E4E61 transparent;
+}
+
+/* Webkit supported browsers */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(46 78 97 / 70%);
+  border-radius: 0.4em;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #2E4E61;
+}
+
+/* End of scrollbar design */
+
 input[type="checkbox"] {
   border: 1px solid #ccc;
 }
