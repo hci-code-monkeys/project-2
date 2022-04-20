@@ -449,6 +449,51 @@ header #second-nav a {
   content: "$";
 }
 
+#descriptions {
+  background: linear-gradient(183.79deg, #E4F5FF 51.72%, #ffffff 51.72%);
+  display: block;
+  height: calc(100vh - 2.7777778em);
+}
+
+#description_container{
+  height: 100%;
+}
+
+#description_container > li{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  height: 100%;
+  width: 100%;
+}
+
+#description_container li p:nth-of-type(1){
+  grid-column: 2 / span 4;
+  grid-row: 1 / span 2;
+}
+
+#description_container li p:nth-of-type(2){
+  grid-column: 2 / span 3;
+  grid-row: 3/ span 2;
+}
+
+#description_container li p:nth-of-type(3){
+  grid-column: 2 / span 2;
+  grid-row: 7/ span 1;
+  text-align: center;
+}
+
+#description_container li figure{
+  grid-column: 6 / span 3;
+  grid-row: 1/ span 8;
+}
+
+#description_container li figure{
+  height: 100%;
+  display: flex;
+}
+
+
 form {
   padding: 0 1em;
   grid-column-start: 2;
