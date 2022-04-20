@@ -319,15 +319,17 @@ header #second-nav a {
 #cart #shopping-cart ul li button{/** Remember to change px to em**/
   font-weight: bold;
   font-size: 1em;
-  width: 1.2em;
   background: rgb(121 172 202 / 70%);
   padding: 0.1em 0.2em;
-  height: 1.2em;
   text-align: center;
+  width: 1.8em;
+  height: 1.8em;
+  border-radius: 50%;
 }
 
 #cart #shopping-cart ul button:nth-of-type(1){
   grid-column: 4;
+  margin-right: 0.1em;
 }
 
 #cart #shopping-cart ul li button,
