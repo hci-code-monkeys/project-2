@@ -132,122 +132,146 @@ if(!stor.getItem("formData")){
           1 : {
             selected : "false",
             quantity: 0,
-            price: 65.00
+            price: 65.00,
+            category: "nike"
           },
           2 : {
             selected : "false",
             quantity: 0,
-            price: 85.00
+            price: 85.00,
+            category: "nike"
           },
           3 : {
             selected : "false",
             quantity: 0,
-            price: 55.00
+            price: 55.00,
+            category: "nike"
           },
           4 : {
             selected : "false",
             quantity: 0,
-            price: 25.00
+            price: 25.00,
+            category: "nike"
           },
           5 : {
             selected : "false",
             quantity: 0,
-            price: 60.00
+            price: 60.00,
+            category: "nike"
           },
           6 : {
             selected : "false",
             quantity: 0,
-            price: 115.00
+            price: 115.00,
+            category: "nike"
           },
           7 : {
             selected : "false",
             quantity: 0,
-            price: 45.00
+            price: 45.00,
+            category: "nike"
           },
           8 : {
             selected : "false",
             quantity: 0,
-            price: 60.00
+            price: 60.00,
+            category: "nike"
           },
           9 : {
             selected : "false",
             quantity: 0,
-            price: 30.00
+            price: 30.00,
+            category: "nike"
           },
           10 : {
             selected : "false",
             quantity: 0,
-            price: 50.00
+            price: 50.00,
+            category: "nike"
           },
           11 : {
             selected : "false",
             quantity: 0,
-            price: 75.00
+            price: 75.00,
+            category: "nike"
           },
           12 : {
             selected : "false",
             quantity: 0,
-            price: 55.00
+            price: 55.00,
+            category: "nike"
           },
           13 : {
             selected : "false",
             quantity: 0,
-            price: 30.00
+            price: 30.00,
+            category: "adidas"
           },
           14 : {
             selected : "false",
             quantity: 0,
-            price: 25.00
+            price: 25.00,
+            category: "adidas"
           },
           15 : {
             selected : "false",
             quantity: 0,
-            price: 45.00
+            price: 45.00,
+            category: "adidas"
           },
           16 : {
             selected : "false",
             quantity: 0,
-            price: 25.00
+            price: 25.00,
+            category: "adidas"
           },
           17 : {
             selected : "false",
             quantity: 0,
-            price: 30.00
+            price: 30.00,
+            category: "adidas"
           },
           18 : {
             selected : "false",
             quantity: 0,
-            price: 30.00
+            price: 30.00,
+            category: "adidas"
           },
           19 : {
             selected : "false",
             quantity: 0,
-            price: 40.00
+            price: 40.00,
+            category: "adidas"
           },
           20 : {
             selected : "false",
             quantity: 0,
-            price: 35.00
+            price: 35.00,
+            category: "adidas"
           },
           21 : {
             selected : "false",
             quantity: 0,
-            price: 40.00
+            price: 40.00,
+            category: "adidas"
           },
           22 : {
             selected : "false",
             quantity: 0,
-            price: 75.00
+            price: 75.00,
+            category: "adidas"
           },
           23 : {
             selected : "false",
             quantity: 0,
-            price: 25.00
+            price: 25.00,
+            category: "adidas"
           },
           24 : {
             selected : "false",
             quantity: 0,
-            price: 45.00
+            price: 45.00,
+            category: "adidas"
           }
         }
       }
@@ -512,6 +536,8 @@ if(!stor.getItem("cart_selector")){
 
 // Home
 if(document.querySelector("main#home")) {
+  var category = document.querySelector("#categories");
+
   itemStatus = JSON.parse(stor.getItem("formData"));
   for(item = 0; item < Object.keys(itemStatus.itemData).length; item++){
     if(itemStatus.itemData[item + 1].selected === "true"){
@@ -550,6 +576,21 @@ if(document.querySelector("main#home")) {
       }
     }
   });
+category.addEventListener("change", function(){
+  var type = category.value;
+  var listOfProducts = document.querySelectorAll("#item-grid li");
+  
+  for(var i = 1; i < Object.keys(itemStatus.itemData).length; i++){
+    console.log(itemStatus.itemData[i])
+
+    if(itemStatus.itemData[i].category !== type){
+      listOfProducts[i].style.display = "none";
+    }
+    else{
+      listOfProducts[i].style.display = "block";
+    }
+  }
+});
 }
 
 // Shipping
