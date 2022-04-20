@@ -71,11 +71,14 @@
           </select>
         </li>
         <li id=price-filter>
-          <fieldset><!-- Semantic: We will use fieldset to group the more than one input together-->
+         <!-- <fieldset>
             <legend> Price Range </legend>
-            <!-- before should be the dollar sign --><input type="number" placeholder="350"/><!-- after should be a dash -->
-            <!-- before should be the dollar sign --><input type="number" placeholder="350"/>
+            <input type="number" placeholder="350"/>
+            <input type="number" placeholder="350"/>
           </fieldset>
+        -->
+        <label>Max Price</label>
+          <input type="number" placeholder="12" id="max-price" />
         </li>
         <li id="size-filter">
           <label>Size</label>
