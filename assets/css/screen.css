@@ -450,11 +450,14 @@ header #second-nav a {
 #cart #order-summary button{
   width: 100%;
   height: 2.5em;
-  border: 0.16em solid #81e0c4;
-  background-color: #81e0c4;
+  background-color: rgb(121 172 202 / 70%);
   border-radius: 1em;
   display: block;
   margin: 0.5em auto 0 auto
+}
+
+#cart #order-summary button:hover{
+  background-color: rgb(121 172 202 / 90%);
 }
 
 #cart #order-summary>span {
