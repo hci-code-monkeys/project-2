@@ -47,7 +47,7 @@ h4 {
   margin-bottom: 1.5em;
 }
 
-p, h4, label, legend, a, input {
+p, h4, label, legend, a, input, button {
   color: #3E4146;
 }
 
@@ -172,8 +172,8 @@ header #second-nav a {
   height: min-content;
   padding-top: 0.2em;
   padding: 1em;
-  background: antiquewhite;
-  box-shadow: 0px 8px 14px 5px #c0e8ff;
+  box-shadow: 0px 8px 14px 6px #c0e8ff;
+  border-radius: 0.45em;
 }
 
 #item-grid li figure{
@@ -217,15 +217,24 @@ header #second-nav a {
   max-width: 15em;
   min-width: 90%;
   height: 2.5em;
-  border: 0.16em solid #000;
+  border: 0.16em solid #3E4146;
   background-color: transparent;
   border-radius: 1em;
   display: block;
   margin: 0.5em auto 0 auto;
 }
 
+#item-grid li button:hover{
+  background-color: #B1E2FF;
+}
+
 #item-grid li button.selected{
-  background-color: #FF2929;
+  border-color: #FFACAC;
+  color: #FF2929;
+}
+
+#item-grid li button.selected:hover{
+  background-color: #FFACAC;
 }
 
 #item-grid li figure img{
@@ -347,6 +356,16 @@ header #second-nav a {
   width: 35px;
   height: 35px;
   text-align: center;
+  border: 0;
+  border-color: transparent;
+  outline-color: transparent;
+  border-radius: 0.4em;
+}
+
+#cart #shopping-cart input[type=number]:hover,
+#cart #shopping-cart input[type=number]:focus-within,
+#cart #shopping-cart input[type=number]:focus {
+  background-color: #fff!important;
 }
 
 #cart #order-summary h4{
