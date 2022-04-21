@@ -1,7 +1,7 @@
 "use strict";
 
 var main = document.querySelector("main");
-var counter, formDataReset, formDataBill, billCount, stor, itemStatus, item, sum;
+var counter, formDataReset, formDataBill, billCount, stor, itemStatus, item, sum, a;
 var fomrx = {
   formSubmission : {
     shipping : {
@@ -807,7 +807,7 @@ if(document.querySelector("main#home")) {
 var listOfProducts = document.querySelectorAll("#item-grid li");
 category.addEventListener("change", function(){
   var type = category.value;
-  
+
   for(var i = 1; i < Object.keys(itemStatus.itemData).length; i++){
     console.log(itemStatus.itemData[i])
 
@@ -821,7 +821,7 @@ category.addEventListener("change", function(){
 });
 maxPrice.addEventListener("change", function(){
   var price = maxPrice.value;
-  
+
   for(var i = 1; i < Object.keys(itemStatus.itemData).length; i++){
     console.log(itemStatus.itemData[i])
 
@@ -834,6 +834,38 @@ maxPrice.addEventListener("change", function(){
   }
 });
 }
+
+
+// Description
+if(document.querySelector("main#descriptions")) {
+  if(location.hash){
+    document.querySelector("#descriptions #description_container").style.bottom = ((parseInt(location.hash.split("#")[1]) - 1)*27) + "em";
+  }
+  main.addEventListener('click', function(event){
+    if(event.target.parentElement.parentElement.parentElement === document.querySelector("section#carousel_container") || event.target.parentElement.parentElement.parentElement.parentElement === document.querySelector("section#carousel_container")){
+      if(event.target.tagName === 'p'){
+        location.hash = event.target.parentElement.dataset.id;
+        for(a = 0; a < event.target.parentElement.parentElement.children.length; a++) {
+          if(event.target.parentElement.parentElement.children[a].classList){
+            event.target.parentElement.parentElement.children[a].classList = [];
+          }
+        }
+        event.target.parentElement.classList = ["hover"];
+        document.querySelector("#descriptions #description_container").style.bottom = ((parseInt(event.target.parentElement.dataset.id) - 1)*27) + "em";
+      } else if(event.target.tagName === 'IMG'){
+        location.hash = event.target.parentElement.parentElement.dataset.id;
+        for(a = 0; a < event.target.parentElement.parentElement.parentElement.children.length; a++) {
+          if(event.target.parentElement.parentElement.parentElement.children[a].classList){
+            event.target.parentElement.parentElement.parentElement.children[a].classList = [];
+          }
+        }
+        event.target.parentElement.parentElement.classList = ["hover"];
+        document.querySelector("#descriptions #description_container").style.bottom = ((parseInt(event.target.parentElement.parentElement.dataset.id) - 1)*27) + "em";
+      }
+    }
+  });
+}
+
 
 // Shipping
 if(document.querySelector("main#shipping")) {
