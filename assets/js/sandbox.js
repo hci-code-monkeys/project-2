@@ -1,7 +1,11 @@
 "use strict";
 
 var main = document.querySelector("main");
-var counter, formDataReset, formDataBill, billCount, stor, itemStatus, item, sum, a;
+var brand = "all";
+var price = "";
+// var size = "";
+var material = "all";
+var counter, formDataReset, formDataBill, billCount, stor, itemStatus, item, sum, a, lower;
 var fomrx = {
   formSubmission : {
     shipping : {
@@ -667,6 +671,54 @@ if(document.querySelector("main#home")) {
       document.querySelectorAll("#home>#item-grid>li")[item].childNodes[9].innerText = 'Remove from Cart';
     }
   }
+  main.addEventListener("change", function(){
+    var i;
+    if(event.target.parentElement.parentElement === document.querySelector("#filter")){
+      if(event.target.parentElement === document.querySelector("#category-filter")){
+        brand = event.target.value;
+      } else if(event.target.parentElement === document.querySelector("#price-filter")){
+        price = event.target.value;
+        if(price !== ""){
+          try {
+            parseFloat(price);
+          } catch(error){
+            event.target.value = "";
+            price = "";
+          }
+        }
+      } else if(event.target.parentElement === document.querySelector("#material-filter")){
+        material = event.target.value;
+      }
+      // } else if(event.target.parentElement === document.querySelector("#size-filter")){
+      //   size = event.target.value;
+      // }
+    }
+    for(i = 1; i <= Object.keys(fomrx.itemData).length; i++){
+      if(document.querySelector("#item-grid").children[i-1].classList.contains("hide")){
+        document.querySelector("#item-grid").children[i-1].classList.toggle("hide");
+      }
+      if(fomrx.itemData[i].brand.toLowerCase() !== brand && brand !== "all"){
+        if(!document.querySelector("#item-grid").children[i-1].classList.contains("hide")){
+          document.querySelector("#item-grid").children[i-1].classList.toggle("hide");
+        }
+      }
+      if(fomrx.itemData[i].price > price && price !== ""){
+        if(!document.querySelector("#item-grid").children[i-1].classList.contains("hide")){
+          document.querySelector("#item-grid").children[i-1].classList.toggle("hide");
+        }
+      }
+      lower = false;
+      lower = fomrx.itemData[i].category.map(function(element){
+        return element.toLowerCase();
+      });
+      if(lower.indexOf(material) === -1 && material !== "all"){
+        if(!document.querySelector("#item-grid").children[i-1].classList.contains("hide")){
+          document.querySelector("#item-grid").children[i-1].classList.toggle("hide");
+        }
+      }
+    }
+  }
+  );
   main.addEventListener('click', function(event) {
     if(event.target.parentElement === main && event.target.tagName === "BUTTON" ){
       event.target.classList.toggle("hiden");
