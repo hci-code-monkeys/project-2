@@ -234,6 +234,7 @@ header #second-nav a {
   text-overflow: ellipsis;
   padding-bottom: 0.5em;
   font-size: 0.94em;
+  color: #1b8bcd;
 }
 
 #item-grid li button{
@@ -297,7 +298,7 @@ header #second-nav a {
   grid-row: span 2;
 }
 
-#cart #shopping-cart ul li p:nth-of-type(1){
+#cart #shopping-cart>ul>li>a{
   grid-column: span 2;
   font-size: 1.4em;
   font-weight: 600;
@@ -306,11 +307,14 @@ header #second-nav a {
   white-space: nowrap;
   text-overflow: ellipsis;
   padding-bottom: 0.5em;
-  color: #56608f;
   width: 65%;
 }
 
-#cart #shopping-cart ul li p:nth-of-type(2){
+#cart #shopping-cart>ul>li>a>p{
+  color: #56608f;
+}
+
+#cart #shopping-cart ul li>p{
   grid-row: 2;
   grid-column: 2;
   font-size: 1.09em;
