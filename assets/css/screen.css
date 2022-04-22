@@ -464,7 +464,6 @@ header #second-nav a {
 }
 
 #description_container{
-  padding-top: 1em;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -473,7 +472,9 @@ header #second-nav a {
 }
 
 #description_container > li{
-  display: grid;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: minmax(2em,max-content) minmax(2em,max-content) repeat(7, 1fr);
   height: 27em;
@@ -483,11 +484,12 @@ header #second-nav a {
 #description_container li p:nth-of-type(1){
   grid-column: 2 / span 4;
   grid-row: 1 / span 1;
-  font-size: 2em;
+  font-size: 1.5em;
+  width: 100%;
   font-weight: 800;
   line-height: normal;
   color: #56608f;
-  padding-bottom: 0.8em;
+  padding-bottom: 0.5em;
 }
 
 #description_container li p:nth-of-type(2){
@@ -502,34 +504,38 @@ header #second-nav a {
 #description_container li p:nth-of-type(3){
   grid-column: 2 / span 2;
   grid-row: 4/ span 1;
-  font-size: 1.48em;
   font-weight: 800;
   line-height: normal;
   color: #35B4FF;
-  text-align: center;
+  width: 100%;
 }
 
 #description_container li p:nth-of-type(4){
   grid-column: 10 / span 1;
   grid-row: 1/ span 1;
+  width: 100%;
+  display: none;
 }
 
 #description_container li ul{
   grid-column: 10 / span 1;
   grid-row: 2/ span 3;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content:space-between;
+  width: 100%;
+  display: none;
 }
 
 #description_container li figure{
   grid-column: 6 / span 3;
   grid-row: 1/ span 5;
+  height: 7em;
+  display: flex;
 }
 
-#description_container li figure{
+#description_container li figure img{
   height: 100%;
-  display: flex;
 }
 
 #background{
@@ -555,7 +561,7 @@ header #second-nav a {
   position: relative;
   height: 100%;
   gap: 2em;
-  left: 109em;
+  left: 117em;
 }
 
 .hover{
@@ -818,6 +824,19 @@ a.edit + p {
   }
 }
 
+@media (min-width: 25em) { /* 400px/16em */
+  #description_container li figure{
+    height: 9em;
+  }
+  #description_container li p:nth-of-type(4){
+    display: block;
+  }
+
+  #description_container li ul{
+    display: flex;
+  }
+}
+
 @media (min-width: 37.70em) { /* 600px/16em */
   #item-grid{
     grid-template-columns: repeat(3,  minmax(auto, calc(33.3333% - 0.66666em)));
@@ -827,6 +846,34 @@ a.edit + p {
   #item-grid li button{
     min-width: 70%;
     max-width: 70%;
+  }
+}
+
+@media (min-width: 50em) { /* 800px/16em */
+  #description_container > li{
+    display: grid;
+  }
+  #description_container li figure{
+    height: 100%;
+  }
+
+  #description_container li ul{
+    flex-direction: column;
+  }
+  #description_container li p:nth-of-type(1){
+    padding-bottom: 0.8em;
+  }
+  #description_container li p:nth-of-type(3){
+    text-align: center;
+  }
+  #description_container li p:nth-of-type(1){
+    font-size: 2em;
+  }
+  #description_container li p:nth-of-type(3){
+    font-size: 1.48em;
+  }
+  #carousel_container ul{
+    left: 109em;
   }
 }
 
