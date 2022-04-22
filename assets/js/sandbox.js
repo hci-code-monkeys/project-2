@@ -371,7 +371,7 @@ var fomrx = {
       ]
     }
   },
-  token : 1
+  token : 2
 };
 
 function localStorageTest(){
