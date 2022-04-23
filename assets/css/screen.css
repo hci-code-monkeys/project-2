@@ -728,7 +728,7 @@ body main#cart #shopping-cart {
 }
 
 body main#cart #order-summary {
-  grid-row-start: 1/1;
+  grid-row: 1/1;
   margin-top: 1em;
 }
 
