@@ -645,6 +645,36 @@ function shippingCheck(event) {
   }
 }
 
+function checkout(){
+  var items = JSON.parse(stor.getItem("formData"));
+  if(items.formSubmission.shipping.country === ''){
+    alert("Please fill in your shipping information.");
+    location.assign("../shipping");
+  } else if(items.formSubmission.billing.country === ''){
+    alert("Please fill in your billing information.");
+    location.assign("../billing");
+  } else if(items.formSubmission.payment.name === ''){
+    alert("Please fill in your payment information.");
+    location.assign("../payment");
+  } else{
+    for(item = 0; item < Object.keys(items.itemData).length; item++){
+      if(items.itemData[item + 1].selected === "true"){
+        document.querySelectorAll("#shopping-cart>ul>li")[item].classList.toggle("remove");
+        document.querySelectorAll("#order-summary>ul>li")[item].classList.toggle("remove");
+        items.itemData[item + 1].selected = "false";
+        items.itemData[item + 1].quantity = 0;
+      }
+    }
+    document.querySelectorAll("#order-summary>span")[0].innerText = 0.00;
+    document.querySelectorAll("#order-summary>span")[1].innerText = 0.00;
+    document.querySelectorAll("#order-summary>span")[2].innerText = 0.00;
+    formDataReset = items;
+    alert("Thank you for using our website!");
+    location.assign("../");
+  }
+
+}
+
 document.querySelectorAll("button.hide")[0].addEventListener("click", function(){
   toggletransform();
 });
@@ -915,6 +945,9 @@ if(document.querySelector("main#cart")) {
 
   main.addEventListener('click', function(event){
     if(event.target.tagName === "BUTTON"){
+      if(event.target === event.target.parentElement.children["8"]){
+        checkout();
+      }
       if(event.target === event.target.parentElement.children["4"]){
         event.target.parentElement.children["5"].value = parseInt(event.target.parentElement.children["5"].value) + 1;
         sum += formDataReset.itemData[event.target.parentElement.dataset.id].price;
