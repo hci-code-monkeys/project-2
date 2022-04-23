@@ -86,7 +86,7 @@ header {
 }
 
 .hide {
-  display: none;
+  display: none!important;
 }
 
 .hiden{
