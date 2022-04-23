@@ -913,8 +913,7 @@ form li .error{
   #cart #order-summary{
     margin-top: 0!important;
     grid-column: span 4;
-    grid-row-start: 1;
-    grid-row: span 3;
+    grid-row: 1/ span 3!important;
     margin-left: 0;
     /* Mozilla bug */
     width: -moz-available;
