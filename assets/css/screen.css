@@ -720,9 +720,13 @@ body main#cart section {
 }
 
 body main#cart #shopping-cart {
-  margin-top: 1em;
   max-height: 15em;
   padding-bottom: 1.2em;
+}
+
+body main#cart #order-summary {
+  grid-row-start: 1/1;
+  margin-top: 1em;
 }
 
 body main#cart #billing-address {
@@ -904,6 +908,7 @@ form li .error{
     margin-right: 0;
   }
   #cart #order-summary{
+    margin-top: 0!important;
     grid-column: span 4;
     grid-row-start: 1;
     grid-row: span 3;
